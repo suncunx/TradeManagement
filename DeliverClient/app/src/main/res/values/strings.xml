@@ -1,0 +1,170 @@
+<resources>
+    <string name="app_name">送货员</string>
+    <string name="navigation_home">账单</string>
+    <string name="navigation_goods">商品</string>
+    <string name="navigation_other">其他</string>
+    <string name="navigation_user">我的</string>
+
+    <string name="unit">单位：</string>
+    <string name="city_XINI">悉尼</string>
+    <string name="news_source">新闻来源</string>
+    <string name="comment_count">条评论</string>
+    <string name="weather">天气</string>
+    <string name="date">日期</string>
+    <string name="temperature">温度</string>
+
+    <string name="search_hint_main">请输入关键词...</string>
+
+    <string name="title">标题</string>
+    <string name="search">搜索</string>
+    <string name="dollar">$</string>
+    <string name="rmb">¥</string>
+    <string name="collect">收藏</string>
+    <string name="weChat">微信</string>
+    <string name="talk">交谈</string>
+    <!--<string name="phone">电话</string>-->
+    <string name="each_week">/每周</string>
+    <string name="apply_for">申请</string>
+    <string name="age">岁</string>
+
+    <string name="tab">\u3000\u3000\u3000\u3000\u3000\u3000</string>
+
+    <!--empty-->
+    <string name="empty_comment">还没有评论呦，快来抢沙发吧~</string>
+
+    <!--forum-->
+    <string name="lift_service">生活服务</string>
+    <string name="lift_service_description">为您提供生活所需</string>
+    <string name="search_hint">找房租房汽车服务</string>
+
+    <!--user-->
+    <string name="login_user">点击登录账号</string>
+    <string name="login_user_describe">享受同步数据等完整功能</string>
+    <!--登录-->
+    <string name="hint_phone">请输入手机号码</string>
+    <string name="hint_verify">请输入验证码</string>
+    <string name="hint_pwd">请输入密码</string>
+    <string name="send_verify">发送验证码</string>
+    <string name="login">登录</string>
+    <string name="login_user_pwd">使用密码登录</string>
+    <string name="login_use_verify">验证码登录</string>
+    <string name="register_new_user">新用户注册</string>
+    <string name="login_forget_pwd">忘记密码？</string>
+
+    <!--搜索-->
+    <string name="search_hot">热门搜索</string>
+    <string name="search_history">历史记录</string>
+    <string name="search_clear">清除</string>
+
+    <!--房屋出租-->
+    <string name="rent_add_photo">添加照片</string>
+    <string name="rent_photo_limit">不超过9张</string>
+    <string name="rent_describe">详细描述</string>
+    <string name="rent_describe_hint">字数在150字以内</string>
+    <string name="rent_connect_info">联系人方式</string>
+    <string name="rent_fit_house">适合你的房子</string>
+    <string name="rent_label">选择标签</string>
+    <string name="rent_info_title">信息标题</string>
+    <string name="rent_base_info">基本信息</string>
+    <string name="rent_live_time">入住时间：</string>
+
+    <string name="rent_times_week">/每周</string>
+    <string name="rent_house_type">房屋户型：</string>
+    <string name="rent_way">出租方式：</string>
+    <string name="rent_live_way">入住方式：</string>
+    <string name="rent_least_time">最短租期：</string>
+    <string name="label">标签：</string>
+    <string name="rent_detail_describe">详情介绍</string>
+    <string name="rent_contact">联系人方式</string>
+    <string name="rent_leave_word_area">留言区</string>
+    <string name="rent_leave_word">我要留言</string>
+
+    <!--新闻详情-->
+    <string name="news_look_all_news">查看全部评论</string>
+    <string name="news_hot">热门新闻</string>
+    <string name="news_comment_hint">我来说两句</string>
+    <string name="news_all_comment_hint">发表评论</string>
+    <string name="news_comment_release">发布</string>
+    <string name="news_like">人喜欢</string>
+    <string name="news_transport">转载声明：</string>
+
+    <string name="advertise_promotion">推广</string>
+
+    <!--Forum job-->
+    <string name="job_times_month">/月</string>
+    <string name="job_area">所在区域</string>
+    <string name="job_industry">行业</string>
+    <string name="job_company">公司名称</string>
+    <string name="job_people_count">人数</string>
+    <string name="job_nature">工作性质</string>
+    <string name="job_visa">签证</string>
+    <string name="job_education">学历要求</string>
+    <string name="job_experiment">经验要求</string>
+
+    <!--同城交友-->
+    <string name="friend_self_introduction">自我介绍</string>
+    <string name="friend_meet_require">交友要求</string>
+    <string name="friend_area">所在地：</string>
+    <string name="friend_sex">性别：</string>
+    <string name="friend_age">年龄：</string>
+    <string name="friend_height">身高：</string>
+    <string name="friend_weight">体重：</string>
+    <string name="friend_education">学历：</string>
+    <string name="friend_profession">职业：</string>
+    <string name="friend_home">家乡：</string>
+
+    <!--房屋求租-->
+    <string name="wanted_way">求租方式</string>
+    <string name="wanted_area">所在区域</string>
+    <string name="wanted_equipment">期望设施</string>
+    <string name="wanted_nature">交易性质</string>
+    <string name="wanted_house_type">期望户型</string>
+    <string name="wanted_label">关键标签</string>
+
+    <!--汽车买卖-->
+    <string name="car_area">所在区域：</string>
+    <string name="car_type">车型：</string>
+    <string name="car_year">年份：</string>
+    <string name="car_brand">品牌：</string>
+    <string name="car_change_speed">变速箱：</string>
+    <string name="car_mileage">里程：</string>
+    <string name="car_introduction">详情介绍：</string>
+
+    <!--二手市场-->
+    <string name="second_hot_type">热门分类</string>
+    <string name="second_watch_all">查看全部商品</string>
+    <string name="second_area">所在区域：</string>
+    <string name="second_type">类型：</string>
+    <string name="second_product_type">产品分类：</string>
+    <string name="second_is_ship">是否送货：</string>
+
+    <string name="x">x</string>
+    <string name="total">共</string>
+    <string name="item_count_describe">件商品，合计：</string>
+    <string name="supplier">供应商：</string>
+    <string name="customer">客户：</string>
+    <string name="deliver_man">送货员</string>
+    <string name="deliver_phone">电话</string>
+    <string name="deliver_now">立即发货</string>
+    <string name="deliver_contact">联系送货员</string>
+    <string name="address">地址：</string>
+    <string name="phone">电话：</string>
+    <string name="count">数量：</string>
+    <string name="total_price_bill">订单总价</string>
+    <string name="unit_price">单价：¥</string>
+    <string name="goods">商品：</string>
+    <string name="in">进货</string>
+    <string name="out">出货</string>
+    <string name="repertory">库存：</string>
+    <string name="in_price">进价：</string>
+    <string name="out_price">出价：</string>
+    <string name="add">添加</string>
+
+    <string name="name">名称：</string>
+    <string name="choose_image">图片：</string>
+
+    <!--<string name="url_test">http://mini.eastday.com/mobile/170719121726058.html</string>-->
+    <!--<string name="url_test">http://192.168.8.184/jraz/index.php/admin/news/test.html</string>-->
+    <!--<string name="url_test">https://news.sina.cn/2017-07-20/detail-ifyihmmm7695621.d.html?vt=4&amp;pos=108</string>-->
+    <string name="url_test">http://192.168.0.144/jraz/index.php/admin/news/test.html</string>
+</resources>

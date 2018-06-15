@@ -1,0 +1,1 @@
+include ':app', ':architecture_library', ':takephoto_library', ':socket'

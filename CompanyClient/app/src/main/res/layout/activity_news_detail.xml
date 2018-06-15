@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                       android:id="@+id/toolbar"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="@dimen/dp_50"
+                                       android:background="@color/colorPrimary"
+                                       android:gravity="center_vertical"
+                                       android:minHeight="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25"
+            android:src="@drawable/ic_arrow_back"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:text="新闻详情"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18"/>
+        <TextView
+            android:id="@+id/action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="字体"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/white"
+            android:layout_marginRight="@dimen/dp_15"/>
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
+
+</LinearLayout>

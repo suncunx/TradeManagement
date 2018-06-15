@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#D62A21</color>
+    <color name="colorPrimaryDark">#E83E33</color>
+    <color name="colorAccent">#D62A21</color>
+    <color name="colorLight">#838283</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="gray_login">#CCCCCC</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#7b7a7a</color>
+
+    <!--DropDown中的颜色-->
+    <color name="gray_drop_down">#cccccc</color>
+
+    <color name="drop_down_selected">#7B1FA2</color>
+    <color name="drop_down_unselected">#111111</color>
+
+    <color name="mask_color">#88888888</color>
+    <color name="check_bg">#f2f2f2</color>
+    <color name="un_press_color">#9C27B0</color>
+</resources>

@@ -1,0 +1,26 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.architecture.model.AdapterBean"/>
+
+        <variable
+            name="adapterBean"
+            type="AdapterBean"/>
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 xmlns:tools="http://schemas.android.com/tools"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:background="@color/light_gray"
+                 android:paddingTop="@dimen/dp_15"
+                 tools:context="com.ant.message.MessageFragment">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:adapterBeanNull="@{adapterBean}"/>
+    </FrameLayout>
+</layout>

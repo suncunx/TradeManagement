@@ -1,0 +1,57 @@
+<layout>
+
+    <data>
+
+        <import type="android.support.v4.app.FragmentPagerAdapter"/>
+
+        <import type="android.support.v4.view.ViewPager"/>
+
+        <variable
+            name="fragmentPagerAdapter"
+            type="FragmentPagerAdapter"/>
+
+        <variable
+            name="viewPager"
+            type="ViewPager"/>
+
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                 xmlns:tools="http://schemas.android.com/tools"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 tools:context="com.ant.home.HomeFragment">
+
+        <!--<include layout="@layout/common_loading_view"/>-->
+        <!--<include layout="@layout/common_error_view"/>-->
+        <LinearLayout
+            style="@style/MMVertical"
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/toolbar_common"/>
+            <LinearLayout
+                style="@style/MWHorizontal"
+                android:gravity="center_vertical">
+
+                <android.support.design.widget.TabLayout
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    app:tabMode="scrollable"
+                    app:tabIndicatorColor="@color/colorPrimary"
+                    app:tabSelectedTextColor="@color/colorPrimary"
+                    app:viewPagerAutoRefresh="@{viewPager}"/>
+            </LinearLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/homeViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:fragmentPagerAdapter="@{fragmentPagerAdapter}"/>
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

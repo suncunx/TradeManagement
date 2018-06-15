@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name></display-name>
+  <servlet>
+    <servlet-name>InBillServlet</servlet-name>
+    <servlet-class>com.trade.servlet.InBillServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SupplierServlet</servlet-name>
+    <servlet-class>com.trade.servlet.SupplierServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CustomerServlet</servlet-name>
+    <servlet-class>com.trade.servlet.CustomerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GoodsServlet</servlet-name>
+    <servlet-class>com.trade.servlet.GoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OutBillServlet</servlet-name>
+    <servlet-class>com.trade.servlet.OutBillServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RepertoryServlet</servlet-name>
+    <servlet-class>com.trade.servlet.RepertoryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FinanceServlet</servlet-name>
+    <servlet-class>com.trade.servlet.FinanceServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.trade.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeliverServlet</servlet-name>
+    <servlet-class>com.trade.servlet.DeliverServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>InBillServlet</servlet-name>
+    <url-pattern>*.inBill</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SupplierServlet</servlet-name>
+    <url-pattern>*.supplier</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CustomerServlet</servlet-name>
+    <url-pattern>*.customer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GoodsServlet</servlet-name>
+    <url-pattern>*.goods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OutBillServlet</servlet-name>
+    <url-pattern>*.outBill</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RepertoryServlet</servlet-name>
+    <url-pattern>*.repertory</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FinanceServlet</servlet-name>
+    <url-pattern>*.finance</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>*.login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeliverServlet</servlet-name>
+    <url-pattern>*.deliver</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

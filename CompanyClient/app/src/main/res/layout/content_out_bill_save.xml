@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+
+        <variable
+            name="outBillSaveBean"
+            type="com.trade.home.detail.outBill.save.model.OutBillSaveBean"/>
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/count"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16"/>
+
+            <EditText
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_marginStart="@dimen/dp_30"
+                android:background="@color/light_gray"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="@={outBillSaveBean.goodsCount}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_14"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginStart="@dimen/dp_8"
+                android:text="@{@string/repertory+outBillSaveBean.repertoryGoodsCount}"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/sp_11"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_45"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_30"
+            android:background="@drawable/button_rent"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_17"
+            app:clickListener="@{outBillSaveBean.listener}"/>
+</LinearLayout>
+</layout>

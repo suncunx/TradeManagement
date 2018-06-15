@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#D62A21</color>-->
+    <!--&lt;!&ndash;<color name="colorPrimary">#0033cc</color>&ndash;&gt;-->
+    <!--<color name="theme_primary">#D62A21</color>-->
+    <!--&lt;!&ndash;状态栏颜色&ndash;&gt;-->
+    <!--<color name="colorPrimaryDark">#E83E33</color>-->
+    <!--<color name="colorAccent">#D62A21</color>-->
+    <color name="colorPrimary">#990099</color>
+    <!--<color name="colorPrimary">#0033cc</color>-->
+    <color name="theme_primary">#990099</color>
+    <!--状态栏颜色-->
+    <color name="colorPrimaryDark">#993399</color>
+    <color name="colorAccent">#990099</color>
+    <!--<color name="colorAccent">#0033cc</color>-->
+    <color name="orange_my">#FC5600</color>
+    <color name="shop_color">#FF0000</color>
+    <color name="colorLight">#838283</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="black_toolbar">#333333</color>
+    <color name="gray">#7b7a7a</color>
+    <color name="gray_login">#CCCCCC</color>
+    <color name="gray_city">#888888</color>
+    <color name="light_gray">#f7f7f7</color>
+
+    <color name="gray_line">#e9e7e7</color>
+
+    <color name="text_rent_title">#79787d</color>
+    <color name="text_rent_title_back">#f2f3f4</color>
+    <color name="text_rent_describe_back">#f7f7f7</color>
+    <color name="text_rent_describe">#dddddd</color>
+
+    <color name="text_job_detail_gray">#7b7a7a</color>
+
+
+    <color name="theme_background">#FFFFFF</color>
+    <color name="theme_background_inverse">#212121</color>
+
+    <color name="theme_accent_1">#212121</color>
+
+    <color name="theme_primary_trans">#99212121</color>
+
+    <color name="theme_primary_text">#212121</color>
+    <color name="theme_secondary_text">#727272</color>
+    <color name="theme_primary_text_inverted">#ffffff</color>
+    <color name="theme_secondary_text_inverted">#8affffff</color>
+    <color name="theme_icons">#FFFFFF</color>
+    <color name="theme_divider">#B6B6B6</color>
+
+    <color name="comment_like">#66ccff</color>
+
+    <color name="colorPrimaryRed">#990099</color>
+    <!--状态栏颜色-->
+    <color name="colorPrimaryDarkRed">#993399</color>
+    <color name="colorAccentRed">#990099</color>
+    <color name="colorAccentPurple">#990099</color>
+
+    <color name="gray_bill_item_text">#737373</color>
+    <color name="orange_deep">#FF4F00</color>
+</resources>

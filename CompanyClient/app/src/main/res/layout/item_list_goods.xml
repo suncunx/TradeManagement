@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.trade.model.GoodsResultBean.ResultBean.GoodsBean"/>
+
+        <variable
+            name="goodsBean"
+            type="GoodsBean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_order_submit_item"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_5"
+            android:background="@color/white"
+            android:clickable="false"
+            android:focusable="false"
+            android:scaleType="fitXY"
+            app:image="@{goodsBean.image}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_order_submit_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLines="2"
+                android:padding="2dp"
+                android:text="@{goodsBean.name}"
+                android:textColor="@color/gray"
+                android:textSize="13sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp">
+
+                <TextView
+                    android:id="@+id/tv_order_submit_item_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:padding="2dp"
+                    android:text="@{@string/unit+goodsBean.unit}"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{@string/in_price+@string/rmb+goodsBean.inUnitPrice}'
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tv_order_submit_item_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:text='@{@string/out_price+@string/rmb+goodsBean.outUnitPrice}'
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tv_order_submit_item_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingRight="8dp"
+                    android:text='@{@string/repertory+goodsBean.repertory}'
+                    android:textColor="@color/black"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

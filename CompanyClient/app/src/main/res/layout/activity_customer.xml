@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.architecture.model.AdapterBean"/>
+
+        <import type="android.view.View.OnClickListener"/>
+        <variable
+            name="adapterBean"
+            type="AdapterBean"/>
+
+        <variable
+            name="listener"
+            type="OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <include layout="@layout/toolbar_common"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:layout_weight="1">
+
+            <include layout="@layout/common_loading_view"/>
+
+            <include layout="@layout/common_error_view"/>
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/contentView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:adapterBeanNull="@{adapterBean}"/>
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </FrameLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_45"
+            android:background="@drawable/button_add_supplier"
+            android:text="@string/add"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_17"
+            app:clickListener="@{listener}"/>
+    </LinearLayout>
+</layout>

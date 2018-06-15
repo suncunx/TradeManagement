@@ -1,0 +1,26 @@
+<layout>
+
+    <data>
+
+        <import type="com.architecture.model.AdapterBean"/>
+
+        <variable
+            name="adapterBean"
+            type="AdapterBean"/>
+
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                 xmlns:tools="http://schemas.android.com/tools"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 tools:context="com.ant.forum.ForumFragment">
+
+        <include
+            layout="@layout/common_lce_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:adapterBean="@{adapterBean}"/>
+    </FrameLayout>
+</layout>

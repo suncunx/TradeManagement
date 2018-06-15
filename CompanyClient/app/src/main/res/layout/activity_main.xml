@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.trade.model.ToolbarBean"/>
+
+        <variable
+            name="toolBarBean"
+            type="ToolbarBean"/>
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.ant.main.MainActivity">
+
+        <!--必须在这边重写toolBarBean否则直接设置则接收不到-->
+        <include
+            layout="@layout/toolbar_home"
+            app:toolBarBean="@{toolBarBean}"/>
+
+        <FrameLayout
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </FrameLayout>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            app:itemIconTint="@color/navigation_menu_item_color"
+            app:itemTextColor="@color/navigation_menu_item_color"
+            app:menu="@menu/navigation"/>
+
+    </LinearLayout>
+</layout>

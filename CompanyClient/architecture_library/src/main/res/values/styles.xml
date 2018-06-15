@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontal_spacing" format="dimension"/>
+        <attr name="vertical_spacing" format="dimension"/>
+    </declare-styleable>
+
+    <style name="SkinCompatTextAppearance" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+</resources>

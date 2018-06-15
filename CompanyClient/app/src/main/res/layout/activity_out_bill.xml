@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.trade.model.OutBillResultBean.ResultBean.OutBillBean"/>
+
+        <import type="com.trade.home.detail.outBill.mvp.OutBillPresenterImpl.OutBillClickListener"/>
+
+        <import type="android.view.View"/>
+        <variable
+            name="outBillBean"
+            type="OutBillBean"/>
+
+        <variable
+            name="listener"
+            type="OutBillClickListener"/>
+
+        <variable
+            name="isButtonVisible"
+            type="Boolean"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <include layout="@layout/toolbar_common"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginTop="@dimen/dp_20"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/details_receiver_picture"
+                android:layout_width="20dip"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/locater"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/details_receiver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/customer"
+                        android:textColor="#7d7d7d"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_receiver_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{outBillBean.customerName}"
+                        android:textColor="#7d7d7d"
+                        android:textSize="14sp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_order_detail_receiver_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{@string/address+outBillBean.customerAddress}"
+                    android:textColor="#7d7d7d"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tv_order_detail_receiver_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{@string/phone+outBillBean.customerPhone}"
+                    android:textColor="#7d7d7d"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical"
+            android:paddingBottom="2dp">
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="8dp"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:src="@mipmap/goods_shop" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_marginLeft="2dp"-->
+            <!--android:text="@{outBillBean.supplierName}"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/dp_2"-->
+            <!--android:background="@color/light_gray"/>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@color/white"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:scaleType="fitXY"
+                    app:image="@{outBillBean.goodsImage}"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_0"
+                            android:layout_margin="3dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:lines="1"
+                            android:maxLines="2"
+                            android:padding="2dp"
+                            android:text="@{outBillBean.goodsName}"
+                            android:textColor="@color/gray"
+                            android:textSize="13sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:padding="2dp"
+                            android:text="@{@string/unit+outBillBean.goodsUnit}"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_order_submit_item_color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:padding="2dp"
+                            android:layout_marginRight="@dimen/dp_4"
+                            android:layout_marginEnd="@dimen/dp_4"
+                            android:text='@{@string/unit_price+outBillBean.goodsOutUnitPrice}'
+                            android:textSize="13sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:layout_marginRight="@dimen/dp_4"
+                            android:layout_marginEnd="@dimen/dp_4"
+                            android:padding="2dp"
+                            android:text='@{@string/count+outBillBean.goodsCount}'
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:layout_marginTop="@dimen/dp_6">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingStart="@dimen/dp_10"
+                android:text="@string/total_price_bill"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{outBillBean.totalPrice}"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:textColor="@color/colorAccent"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:layout_marginTop="@dimen/dp_6">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingStart="@dimen/dp_10"
+                android:text="@string/deliver_man"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{outBillBean.deliverMan}"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_6">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingStart="@dimen/dp_10"
+                android:text="@string/deliver_phone"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{outBillBean.deliverPhone}"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_order_detail_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/selector_btn_pay"
+                android:onClick="@{()->listener.onClickLeft(outBillBean)}"
+                android:text="联系客户"
+                android:textColor="#383838"/>
+
+            <Button
+                android:id="@+id/btn_order_detail_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/selector_btn_pay"
+                android:onClick="@{()->listener.onClickRight(outBillBean)}"
+                android:text="@{isButtonVisible?@string/deliver_now:@string/deliver_contact}"
+                android:textColor="@color/colorAccent"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

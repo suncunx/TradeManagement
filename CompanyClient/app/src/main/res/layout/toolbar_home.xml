@@ -1,0 +1,88 @@
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <import type="com.trade.model.ToolbarBean"/>
+
+        <variable
+            name="toolBarBean"
+            type="ToolbarBean"/>
+    </data>
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                       android:id="@+id/toolbar"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="@dimen/dp_55"
+                                       android:background="?attr/colorAccent"
+                                       android:gravity="center_vertical"
+                                       android:minHeight="?attr/actionBarSize">
+
+        <LinearLayout
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:onClick="@{()->toolBarBean.leftClickListener.onClick(left)}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{toolBarBean.city}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/dp_8"
+                android:visibility="@{toolBarBean.home?View.VISIBLE:View.GONE}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/middle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:onClick="@{()->toolBarBean.titleClickListener.onClick(middle)}"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@{toolBarBean.title}"
+                android:textColor="@color/white"
+                android:textSize="@{toolBarBean.home?@dimen/sp_21:@dimen/sp_20}"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp_28"
+                android:layout_height="@dimen/dp_28"
+                android:visibility="@{toolBarBean.home?View.VISIBLE:View.GONE}"
+                android:src="@mipmap/ic_keyboard_arrow_down_white_36dp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/right"
+            android:layout_width="@dimen/dp_26"
+            android:layout_height="@dimen/dp_26"
+            android:layout_gravity="right|end|center_vertical"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_2"
+            android:src="@mipmap/ic_add_circle_white_48pt_2x"
+            android:onClick="@{()->toolBarBean.rightClickListener.onClick(right)}"
+            android:visibility="@{toolBarBean.home?View.VISIBLE:View.GONE}"/>
+        <TextView
+            android:id="@+id/text_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|end|center_vertical"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:text="@string/add"
+            android:visibility="gone"/>
+    </android.support.v7.widget.Toolbar>
+</layout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dropMenuBean"
+            type="com.architecture.model.DropMenuBean"/>
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/white"
+                  android:orientation="vertical">
+
+        <include layout="@layout/toolbar_common"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/common_load_error_view"/>
+
+            <LinearLayout
+                android:id="@+id/contentView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.architecture.view.DropDownMenu
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/dropDownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:dddividerColor="@color/gray_drop_down"
+                    app:ddmaskColor="@color/gray_drop_down"
+                    app:ddmenuBackgroundColor="@color/white"
+                    app:ddmenuMenuHeightPercent="0.5"
+                    app:ddmenuSelectedIcon="@mipmap/drop_down_selected_icon"
+                    app:ddmenuTextSize="13sp"
+                    app:ddmenuUnselectedIcon="@mipmap/drop_down_unselected_icon"
+                    app:ddtextSelectedColor="@color/colorAccent"
+                    app:ddtextUnselectedColor="@color/drop_down_unselected"
+                    app:ddunderlineColor="@color/gray_drop_down"
+                    app:popupViews="@{dropMenuBean.popupViews}"
+                    app:tabText="@{dropMenuBean.tabText}"
+                    app:contentView="@{dropMenuBean.contentView}"
+                    app:dropMenuClose="@{dropMenuBean.close}"
+                    app:tabTexts="@{dropMenuBean.tabTexts}">
+
+                </com.architecture.view.DropDownMenu>
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

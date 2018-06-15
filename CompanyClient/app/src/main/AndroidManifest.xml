@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.trade">
+
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+
+    <application
+        android:name=".app.TradeApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".main.MainActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".home.detail.inbill.InBillActivity"/>
+        <activity android:name=".home.detail.outBill.OutBillActivity"/>
+        <activity android:name=".home.detail.inbill.save.InBillSaveActivity"/>
+
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+
+        <meta-data
+            android:name="Mob-AppKey"
+            android:value="d5f6b75591a3"/>
+        <meta-data
+            android:name="Mob-AppSecret"
+            android:value="551c92abb280bcb234ccc2363fd1111c"/>
+
+        <activity android:name=".home.detail.outBill.save.OutBillSaveActivity"/>
+        <activity android:name=".goods.detail.GoodsDetailActivity"/>
+        <activity android:name=".other.supplier.SupplierActivity"/>
+        <activity android:name=".other.customer.CustomerActivity"/>
+        <activity android:name=".goods.save.GoodsSaveActivity"/>
+        <activity android:name=".other.finance.FinanceActivity"/>
+        <activity android:name=".user.login.LoginActivity"/>
+        <activity android:name=".user.login.black.LoginBlackActivity"/>
+        <activity android:name=".user.register.RegisterActivity"/>
+        <activity android:name=".app.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".other.focus.news.detail.NewsDetailActivity"/>
+        <activity android:name=".other.focus.FocusActivity"/>
+        <activity android:name=".other.deliver.DeliverActivity"/>
+    </application>
+
+</manifest>

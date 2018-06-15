@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <TextView
+      android:id="@+id/errorView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:padding="16dp"
+      android:layout_gravity="center"
+      android:drawableTop="@mipmap/ic_logo"
+      android:drawablePadding="16dp"
+      android:textSize="14sp"
+      android:textColor="#656565"
+      android:text="网络错误，点击刷新"
+      android:gravity="center"/>
+
+</merge>

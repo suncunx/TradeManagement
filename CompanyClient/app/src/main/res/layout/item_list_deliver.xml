@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="deliverBean"
+            type="com.trade.model.DeliverResultBean.ResultBean.DeliverBean"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/dp_40"
+                  android:gravity="center_vertical"
+                  android:orientation="horizontal"
+                  android:paddingTop="@dimen/dp_8">
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:text="@{deliverBean.deliverMan}"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:text="@{deliverBean.deliverPhone}"
+            android:textColor="@color/black"/>
+        <!--<TextView-->
+            <!--android:layout_width="@dimen/dp_0"-->
+            <!--android:layout_weight="3"-->
+            <!--android:paddingLeft="@dimen/dp_10"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@{deliverBean.address}"-->
+            <!--android:textColor="@color/black"/>-->
+    </LinearLayout>
+</layout>

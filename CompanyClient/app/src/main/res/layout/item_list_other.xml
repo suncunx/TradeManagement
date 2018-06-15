@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.trade.other.model.OtherItem"/>
+
+        <variable
+            name="otherItem"
+            type="OtherItem"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_vertical"
+                  android:orientation="horizontal"
+                  android:background="@color/white"
+                  android:paddingBottom="@dimen/dp_15"
+                  android:paddingTop="@dimen/dp_15">
+
+        <ImageView
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:layout_marginStart="@dimen/dp_25"
+            app:image="@{otherItem.imageRes}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginStart="@dimen/dp_15"
+            android:textSize="@dimen/sp_17"
+            android:text="@{otherItem.title}"
+            android:textColor="@color/black"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_1"
+            android:visibility="invisible"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25"
+            android:layout_marginRight="@dimen/dp_15"
+            android:src="@mipmap/ic_keyboard_arrow_right_black_36dp"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.trade.other.focus.news.model.BannerBean"/>
+
+        <import type="com.trade.other.focus.news.model.WeatherBean"/>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="bannerBean"
+            type="BannerBean"/>
+
+        <variable
+            name="weatherResultBean"
+            type="WeatherBean"/>
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:id="@+id/headerViews"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150"
+            app:autoPlay="@{bannerBean.startAutoPlay}"
+            app:bannerBean="@{bannerBean}"
+            app:delay_time="2500"
+            app:title_textcolor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{weatherResultBean.result.date}"
+                android:textColor="@color/gray"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                app:image="@{weatherResultBean.result.icon}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{weatherResultBean.result.detail}"
+                android:textColor="@color/gray"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@{weatherResultBean.result.temp}"
+                android:textColor="@color/gray"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

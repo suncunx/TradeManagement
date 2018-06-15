@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="cityValue">
+        <item>新南威尔士</item>
+        <item>维多利亚</item>
+        <item>昆士兰</item>
+        <item>南澳</item>
+        <item>西澳</item>
+        <item>其他重要城市</item>
+    </string-array>
+    <string-array name="firstCity">
+        <item>悉尼</item>
+        <item>卧龙岗</item>
+        <item>纽卡斯尔</item>
+        <item>中央海岸</item>
+    </string-array>
+    <string-array name="secondCity">
+        <item>墨尔本</item>
+        <item>基隆</item>
+    </string-array>
+    <string-array name="thirdCity">
+        <item>布里斯班</item>
+        <item>黄金海岸</item>
+        <item>凯恩斯</item>
+        <item>阳光海岸</item>
+    </string-array>
+    <string-array name="forthCity">
+        <item>阿德莱德</item>
+    </string-array>
+    <string-array name="fifthCity">
+        <item>泊斯</item>
+    </string-array>
+    <string-array name="sixthCity">
+        <item>堪培拉</item>
+        <item>霍巴特</item>
+        <item>达尔文</item>
+    </string-array>
+
+    <string-array name="query_suggestions">
+        <item>A very very long suggestion that would span multiple lines.</item>
+        <item>Android</item>
+        <item>iOS</item>
+        <item>SCALA</item>
+        <item>Ruby</item>
+        <item>JavaScript</item>
+        <item>C#</item>
+        <item>Python</item>
+        <item>C</item>
+        <item>C++</item>
+        <item>PHP</item>
+        <item>Go</item>
+        <item>Perl</item>
+        <item>Bash</item>
+        <item>Lua</item>
+        <item>R</item>
+        <item>TCL</item>
+        <item>Haskell</item>
+        <item>Objective C</item>
+        <item>Swift</item>
+        <item>Kotlin</item>
+        <item>jQuery</item>
+        <item>Development</item>
+        <item>Web</item>
+        <item>Ajax</item>
+        <item>Test</item>
+        <item>Testing</item>
+        <item>CookBook</item>
+        <item>Beagle</item>
+        <item>VMware</item>
+        <item>Less.js</item>
+        <item>IDE</item>
+        <item>Arduino</item>
+        <item>Xamarin</item>
+        <item>UI</item>
+        <item>Microsoft</item>
+        <item>Application</item>
+        <item>Development</item>
+        <item>JUnit</item>
+        <item>SQL</item>
+        <item>Beagle</item>
+    </string-array>
+
+    <string-array name="search_home">
+        <item>科技</item>
+        <item>娱乐</item>
+        <item>社会</item>
+    </string-array>
+    <string-array name="search_hot">
+        <item>租房</item>
+        <item>找房</item>
+        <item>找工作</item>
+        <item>交友</item>
+        <item>二手市场</item>
+    </string-array>
+
+    <string-array name="font_size">
+        <item>小</item>
+        <item>中</item>
+        <item>大</item>
+    </string-array>
+    <string-array name="rent_area">
+
+        <item>不限</item>
+        <item>Abbotsbury</item>
+        <item>Abbotsford</item>
+        <item>Acacia Gardens</item>
+        <item>Agnes Banks</item>
+        <item>Airds</item>
+        <item>Alexandria</item>
+        <item>Alfords Point</item>
+        <item>Allambie Heights</item>
+        <item>Allawah</item>
+        <item>Ambarvale</item>
+        <item>Annandale</item>
+        <item>Annangrove</item>
+        <item>Arcadia</item>
+        <item>Arncliffe</item>
+        <item>Arndell Park</item>
+        <item>Artarmon</item>
+        <item>Ashbury</item>
+        <item>Ashcroft</item>
+        <item>Allawah</item>
+        <item>Asquith</item>
+        <item>Auburn</item>
+        <item>Austinmer</item>
+        <item>Austral</item>
+        <item>Avalon</item>
+        <item>BiJiaSuo</item>
+        <item>BiBiShuang</item>
+        <item>BillGaze</item>
+        <item>Client</item>
+        <item>Converse</item>
+        <item>Correct</item>
+        <item>Command</item>
+    </string-array>
+    <string-array name="rent_way">
+        <item>不限</item>
+        <item>单间</item>
+        <item>客厅</item>
+        <item>整租</item>
+        <item>Share</item>
+    </string-array>
+    <string-array name="rent_house_type">
+        <item>不限</item>
+        <item>Apartment</item>
+        <item>Unit</item>
+        <item>House</item>
+        <item>Studio</item>
+        <item>Town House</item>
+        <item>仓库/车库</item>
+        <item>office</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="rent_source">
+        <item>不限</item>
+        <item>个人</item>
+        <item>中介</item>
+    </string-array>
+    <string-array name="rent_release_time">
+        <item>不限</item>
+        <item>1天</item>
+        <item>3天</item>
+        <item>7天</item>
+    </string-array>
+    <string-array name="rent_least_time">
+        <item>不限</item>
+        <item>1月</item>
+        <item>3月</item>
+        <item>7月</item>
+    </string-array>
+    <string-array name="rent_empty_time">
+        <item>1天内</item>
+        <item>3天内</item>
+        <item>7天内</item>
+    </string-array>
+    <string-array name="rent_price">
+        <item>500</item>
+        <item>700</item>
+        <item>1000</item>
+        <item>1500</item>
+    </string-array>
+    <string-array name="rent_label">
+        <item>短租</item>
+        <item>押一付一</item>
+        <item>交通便利</item>
+        <item>只限女生</item>
+    </string-array>
+</resources>
