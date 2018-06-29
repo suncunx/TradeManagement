@@ -7,12 +7,12 @@
 	登录页面
 	
 	
-	![login image](https://github.com/suncunx/TradeManagement/blob/master/ScreenShots/login.jpg)
+![loginimage](https://github.com/suncunx/TradeManagement/blob/master/ScreenShots/login.jpg)
 	
 	主页面
 	
 	
-	[[https://github.com/suncunx/TradeManagement/tree/master/ScreenShots/inBill.jpg|alt=octocat]]
+[[https://github.com/suncunx/TradeManagement/tree/master/ScreenShots/inBill.jpg|alt=octocat]]
 	
 	2.送货员客户端：登录、查看当前需要送货的出货账单（即时推送）、确认货物送达、退出登录
 	
