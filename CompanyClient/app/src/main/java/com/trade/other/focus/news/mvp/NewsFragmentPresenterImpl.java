@@ -2,6 +2,8 @@ package com.trade.other.focus.news.mvp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
@@ -14,10 +16,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.Gson;
 import com.trade.R;
-import com.trade.http.client.Callback;
-import com.trade.http.client.XpHttpClient;
-import com.trade.http.request.XpRequest;
-import com.trade.http.response.XpResponse;
+import com.trade.app.TradeApplication;
 import com.trade.other.focus.model.BannerResultBean;
 import com.trade.other.focus.news.adapter.NewsAdapter;
 import com.trade.other.focus.news.detail.NewsDetailActivity;
@@ -31,9 +30,12 @@ import com.trade.util.BannerUtil;
 import com.trade.view.HorizontalDecoration;
 import com.youth.banner.listener.OnBannerListener;
 
+import java.io.IOException;
 import java.util.List;
 
-import static com.tamic.novate.Novate.TAG;
+import okhttp3.Call;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by Stephen Sun on 2017/7/5 0005.
@@ -87,107 +89,123 @@ public class NewsFragmentPresenterImpl extends BaseNovateRvPresenterImpl<NewsFra
     @Override
     public void loadData(boolean pullToRefresh, String category, Context context) {
         this.category = category;
-            getView().showLoading(pullToRefresh);
+        getView().showLoading(pullToRefresh);
         pageNo = 1;
         request(pullToRefresh);
-//        requestNewsList(pullToRefresh, category);
+        //        requestNewsList(pullToRefresh, category);
 
     }
 
-//    private void requestBanner(final boolean pullToRefresh, final String cateId) {
-//        Map<String, Object> map = new HashMap<>();
-//        map.put(NewsConstant.KEY_CATE_ID, cateId);
-//        novate.post(NewsConstant.NEWS_BANNER, map, new BaseSubscriber<ResponseBody>() {
-//            @Override
-//            public void onError(Throwable e) {
-//
-//            }
-//
-//            @Override
-//            public void onNext(ResponseBody responseBody) {
-//                try {
-//                    String resultStr = responseBody.string();
-//                    JSONObject jsonObject = new JSONObject(resultStr);
-//
-//                    LogUtils.d(resultStr);
-//                    if (jsonObject.getString(ApiManager.CODE).equals(HttpCode.OK)) { // 200
-//                        BannerResultBean resultBean = GsonUtils.json2Bean(jsonObject, BannerResultBean.class);
-//                        bannerResultList = resultBean.getResult();
-//                        List<String> images = new ArrayList<>();
-//                        List<String> titles = new ArrayList<>();
-//                        for (BannerResultBean.ResultBean bean : bannerResultList) {
-//                            images.add(bean.getPicture());
-//                            titles.add(bean.getTitle());
-//                        }
-//                        initializeBanner(images, titles, NewsFragmentPresenterImpl.this);
-//                        requestWeather();
-//                    } else {
-//                        getView().showContent();
-//                    }
-//
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//    }
+    //    private void requestBanner(final boolean pullToRefresh, final String cateId) {
+    //        Map<String, Object> map = new HashMap<>();
+    //        map.put(NewsConstant.KEY_CATE_ID, cateId);
+    //        novate.post(NewsConstant.NEWS_BANNER, map, new BaseSubscriber<ResponseBody>() {
+    //            @Override
+    //            public void onError(Throwable e) {
+    //
+    //            }
+    //
+    //            @Override
+    //            public void onNext(ResponseBody responseBody) {
+    //                try {
+    //                    String resultStr = responseBody.string();
+    //                    JSONObject jsonObject = new JSONObject(resultStr);
+    //
+    //                    LogUtils.d(resultStr);
+    //                    if (jsonObject.getString(ApiManager.CODE).equals(HttpCode.OK)) { // 200
+    //                        BannerResultBean resultBean = GsonUtils.json2Bean(jsonObject, BannerResultBean.class);
+    //                        bannerResultList = resultBean.getResult();
+    //                        List<String> images = new ArrayList<>();
+    //                        List<String> titles = new ArrayList<>();
+    //                        for (BannerResultBean.ResultBean bean : bannerResultList) {
+    //                            images.add(bean.getPicture());
+    //                            titles.add(bean.getTitle());
+    //                        }
+    //                        initializeBanner(images, titles, NewsFragmentPresenterImpl.this);
+    //                        requestWeather();
+    //                    } else {
+    //                        getView().showContent();
+    //                    }
+    //
+    //                } catch (IOException e) {
+    //                    e.printStackTrace();
+    //                } catch (JSONException e) {
+    //                    e.printStackTrace();
+    //                }
+    //            }
+    //        });
+    //    }
 
     private void request(final boolean pullToRefresh) {
-        XpRequest.Builder builder = new XpRequest.Builder();
-        Log.d(TAG, "request: category = " + category);
-        builder.url("https://newsapi.org/v2/top-headlines?country=cn&pageSize=8&category=" + category +"&apiKey=1a2ed8b9114942028dbada1d37080fe0&page=" + pageNo);
-        builder.method("GET");
-        XpRequest request = builder.build();
-
-        XpHttpClient.CLIENT.newCall(request, new Callback() {
+        Request.Builder builder = new Request.Builder();
+        String url = "https://newsapi.org/v2/top-headlines?country=cn&pageSize=8&category=" + category + "&apiKey=1a2ed8b9114942028dbada1d37080fe0&page=" + pageNo;
+        builder.url(url);
+        TradeApplication.client.newCall(builder.build()).enqueue(new okhttp3.Callback() {
             @Override
-            public void onResponse(XpResponse rsp) throws Exception {
-                Log.d("MainActivity", "onResponse: " + rsp.getResponse());
-                NewsResultBean newsResultBean = new Gson().fromJson(rsp.getResponse(), NewsResultBean.class);
-                pages = newsResultBean.getTotalResults() / PAGE_SIZE;
-                List<NewsResultBean.ArticleBean> beanList = newsResultBean.getArticles();
-                adapter.setNewData(beanList);
-                if (!pullToRefresh) {
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(NewsFragmentPresenterImpl.this.context);
-                    adapterBean = new AdapterBean(layoutManager, adapter, new HorizontalDecoration(NewsFragmentPresenterImpl.this.context, R.drawable.divider));
-                    //                    requestBanner(false, category);
-                    getView().setData(adapterBean);
-                    getView().showContent();
-                    LogUtils.d("getView().setData(adapterBean);");
-                } else {
-                    getView().stopRefresh();
-                }
+            public void onFailure(Call call, final IOException e) {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        LogUtils.e(e.getMessage());
+                        if (!pullToRefresh) {
+                            if (getView() != null) {
+                                getView().showError(new Exception(), pullToRefresh);
+                            }
+                        } else {
+                            ToastUtils.showShort("网络连接超时");
+                        }
+                    }
+                });
+
             }
 
             @Override
-            public void onFailure() {
-                if (!pullToRefresh) {
-                    if (getView() != null) {
-                        getView().showError(new Exception(), pullToRefresh);
+            public void onResponse(Call call, final Response response) throws IOException {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        String rsp = null;
+                        try {
+                            rsp = response.body().string();
+                            Log.d("MainActivity", "onResponse: " + rsp);
+                            NewsResultBean newsResultBean = new Gson().fromJson(rsp, NewsResultBean.class);
+                            pages = newsResultBean.getTotalResults() / PAGE_SIZE;
+                            List<NewsResultBean.ArticleBean> beanList = newsResultBean.getArticles();
+                            adapter.setNewData(beanList);
+                            if (!pullToRefresh) {
+                                LinearLayoutManager layoutManager = new LinearLayoutManager(NewsFragmentPresenterImpl.this.context);
+                                adapterBean = new AdapterBean(layoutManager, adapter, new HorizontalDecoration(NewsFragmentPresenterImpl.this.context, R.drawable.divider));
+                                //                    requestBanner(false, category);
+                                getView().setData(adapterBean);
+                                getView().showContent();
+                                LogUtils.d("getView().setData(adapterBean);");
+                            } else {
+                                getView().stopRefresh();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                     }
-                } else {
-                    ToastUtils.showShort("网络连接超时");
-                }
+                });
             }
         });
     }
-//    private void requestWeather() {
-//        String city = "";
-//        novate.call(service.getWeather(city), new BaseSubscriber<WeatherBean>() {
-//            @Override
-//            public void onError(Throwable e) {
-//                getView().showError(e, false);
-//            }
-//
-//            @Override
-//            public void onNext(WeatherBean weatherBean) {
-//                initializeHeader(weatherBean);
-//                getView().showContent();
-//            }
-//        });
-//    }
+    //    private void requestWeather() {
+    //        String city = "";
+    //        novate.call(service.getWeather(city), new BaseSubscriber<WeatherBean>() {
+    //            @Override
+    //            public void onError(Throwable e) {
+    //                getView().showError(e, false);
+    //            }
+    //
+    //            @Override
+    //            public void onNext(WeatherBean weatherBean) {
+    //                initializeHeader(weatherBean);
+    //                getView().showContent();
+    //            }
+    //        });
+    //    }
 
     @Override
     protected void initializeInjector(ApplicationComponent applicationComponent) {
@@ -210,26 +228,41 @@ public class NewsFragmentPresenterImpl extends BaseNovateRvPresenterImpl<NewsFra
             loadMoreEnd(false);
             return;
         }
-        XpRequest.Builder builder = new XpRequest.Builder();
-        Log.d(TAG, "request: category = " + category);
-        builder.url("https://newsapi.org/v2/top-headlines?country=cn&pageSize=8&category=" + category +"&apiKey=1a2ed8b9114942028dbada1d37080fe0&page=" + (++pageNo));
-        builder.method("GET");
-        XpRequest request = builder.build();
-
-        XpHttpClient.CLIENT.newCall(request, new Callback() {
+        Request.Builder builder = new Request.Builder();
+        String url = "https://newsapi.org/v2/top-headlines?country=cn&pageSize=8&category=" + category + "&apiKey=1a2ed8b9114942028dbada1d37080fe0&page=" + (++pageNo);
+        builder.url(url);
+        TradeApplication.client.newCall(builder.build()).enqueue(new okhttp3.Callback() {
             @Override
-            public void onResponse(XpResponse rsp) throws Exception {
-                Log.d("MainActivity", "onResponse: " + rsp.getResponse());
-                NewsResultBean newsResultBean = new Gson().fromJson(rsp.getResponse(), NewsResultBean.class);
-                pages = newsResultBean.getTotalResults() / PAGE_SIZE;
-                List<NewsResultBean.ArticleBean> beanList = newsResultBean.getArticles();
-                adapter.addData(beanList);
-                loadComplete();
+            public void onFailure(Call call, final IOException e) {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        LogUtils.e(e.getMessage());
+                        adapter.loadMoreFail();
+                    }
+                });
+
             }
 
             @Override
-            public void onFailure() {
-                adapter.loadMoreFail();
+            public void onResponse(Call call, final Response response) throws IOException {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        String rsp = null;
+                        try {
+                            rsp = response.body().string();
+                            Log.d("MainActivity", "onResponse: " + rsp);
+                            NewsResultBean newsResultBean = new Gson().fromJson(rsp, NewsResultBean.class);
+                            pages = newsResultBean.getTotalResults() / PAGE_SIZE;
+                            List<NewsResultBean.ArticleBean> beanList = newsResultBean.getArticles();
+                            adapter.addData(beanList);
+                            loadComplete();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
     }
