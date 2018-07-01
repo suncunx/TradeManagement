@@ -6,8 +6,8 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.trade.other.focus.news.model.BannerBean;
-import com.trade.other.focus.news.model.WeatherBean;
+import com.trade.other.focus.model.BannerBean;
+import com.trade.other.focus.model.WeatherBean;
 
 
 /**

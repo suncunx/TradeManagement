@@ -29,11 +29,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".main.MainActivity"
+            android:name=".main.ui.MainActivity"
             android:launchMode="singleTask"/>
-        <activity android:name=".home.detail.inbill.InBillActivity"/>
-        <activity android:name=".home.detail.outBill.OutBillActivity"/>
-        <activity android:name=".home.detail.inbill.save.InBillSaveActivity"/>
+        <activity android:name=".home.ui.InBillActivity"/>
+        <activity android:name=".home.ui.OutBillActivity"/>
+        <activity android:name=".home.ui.InBillSaveActivity"/>
 
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -49,15 +49,15 @@
             android:name="Mob-AppSecret"
             android:value="551c92abb280bcb234ccc2363fd1111c"/>
 
-        <activity android:name=".home.detail.outBill.save.OutBillSaveActivity"/>
-        <activity android:name=".goods.detail.GoodsDetailActivity"/>
-        <activity android:name=".other.supplier.SupplierActivity"/>
-        <activity android:name=".other.customer.CustomerActivity"/>
-        <activity android:name=".goods.save.GoodsSaveActivity"/>
-        <activity android:name=".other.finance.FinanceActivity"/>
-        <activity android:name=".user.login.LoginActivity"/>
-        <activity android:name=".user.login.black.LoginBlackActivity"/>
-        <activity android:name=".user.register.RegisterActivity"/>
+        <activity android:name=".home.ui.OutBillSaveActivity"/>
+        <activity android:name=".goods.ui.GoodsDetailActivity"/>
+        <activity android:name=".other.ui.SupplierActivity"/>
+        <activity android:name=".other.ui.CustomerActivity"/>
+        <activity android:name=".goods.ui.GoodsSaveActivity"/>
+        <activity android:name=".other.ui.FinanceActivity"/>
+        <activity android:name=".login.ui.LoginActivity"/>
+        <activity android:name=".login.ui.LoginPwdActivity"/>
+        <activity android:name=".login.ui.RegisterActivity"/>
         <activity android:name=".app.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -65,9 +65,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".other.focus.news.detail.NewsDetailActivity"/>
-        <activity android:name=".other.focus.FocusActivity"/>
-        <activity android:name=".other.deliver.DeliverActivity"/>
+        <activity android:name=".other.focus.ui.NewsDetailActivity"/>
+        <activity android:name=".other.focus.ui.FocusActivity"/>
+        <activity android:name=".other.ui.DeliverActivity"/>
     </application>
 
 </manifest>

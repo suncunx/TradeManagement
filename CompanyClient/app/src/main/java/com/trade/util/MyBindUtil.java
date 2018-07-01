@@ -3,7 +3,7 @@ package com.trade.util;
 import android.databinding.BindingAdapter;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.trade.other.focus.news.model.BannerBean;
+import com.trade.other.focus.model.BannerBean;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 

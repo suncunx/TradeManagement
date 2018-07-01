@@ -5,7 +5,7 @@
 
         <variable
             name="goodsSaveBean"
-            type="com.trade.goods.save.model.GoodsSaveBean"/>
+            type="com.trade.goods.model.GoodsSaveBean"/>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

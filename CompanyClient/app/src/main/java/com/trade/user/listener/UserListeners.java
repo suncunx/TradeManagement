@@ -11,7 +11,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.trade.app.AppData;
-import com.trade.user.login.LoginActivity;
+import com.trade.login.ui.LoginActivity;
 import com.trade.user.model.UserItem;
 import com.trade.util.PreferUtil;
 

@@ -2,11 +2,11 @@
 
     <data>
 
-        <import type="com.trade.popup.PopupItem"/>
+        <import type="com.trade.widget.popup.PopupItem"/>
 
         <variable
             name="popupItem"
-            type="com.trade.popup.PopupItem"/>
+            type="PopupItem"/>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

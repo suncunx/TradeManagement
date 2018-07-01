@@ -2,7 +2,10 @@ package com.trade.home.di;
 
 import com.architecture.di.PerFragment;
 import com.architecture.di.components.ApplicationComponent;
-import com.trade.home.mvp.HomePresenterImpl;
+import com.trade.home.presenter.InBillSavePresenterImpl;
+import com.trade.home.presenter.OutBillPresenterImpl;
+import com.trade.home.presenter.OutBillSavePresenterImpl;
+import com.trade.home.presenter.HomePresenterImpl;
 
 import dagger.Component;
 
@@ -14,4 +17,10 @@ import dagger.Component;
 @Component(dependencies = {ApplicationComponent.class}, modules = {HomePresenterModule.class})
 public interface HomePresenterComponent {
     void inject(HomePresenterImpl presenter);
+
+    void inject(InBillSavePresenterImpl presenter);
+
+    void inject(OutBillPresenterImpl presenter);
+
+    void inject(OutBillSavePresenterImpl presenter);
 }

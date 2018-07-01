@@ -3,9 +3,9 @@
 
     <data>
 
-        <import type="com.trade.user.login.model.LoginBean"/>
+        <import type="com.trade.login.model.LoginBean"/>
 
-        <import type="com.trade.user.login.black.LoginBlackActivity.LoginBlackClickListener"/>
+        <import type="com.trade.login.ui.LoginPwdActivity.LoginBlackClickListener"/>
 
         <import type="android.text.method.TransformationMethod"/>
 

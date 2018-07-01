@@ -1,9 +1,6 @@
 package com.trade.home.model;
 
-import com.trade.model.InBillResultBean;
-import com.trade.model.OutBillResultBean;
 import com.trade.model.SimpleResultBean;
-import com.trade.model.SupplierResultBean;
 
 import java.util.Map;
 
@@ -43,10 +40,6 @@ public interface HomeService {
     @FormUrlEncoded
     @POST("update.inBill")
     Observable<SimpleResultBean> updateInBill(@FieldMap Map<String, String> map);
-
-    @FormUrlEncoded
-    @POST("list.supplier")
-    Observable<SupplierResultBean> getSuppliers(@Field("userId") String userId);
 
     @FormUrlEncoded
     @POST("save.supplier")

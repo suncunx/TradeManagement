@@ -4,8 +4,8 @@ import android.app.Activity;
 
 import com.architecture.di.PerActivity;
 import com.trade.main.listener.MainListeners;
-import com.trade.main.mvp.MainPresenter;
-import com.trade.main.mvp.MainPresenterImpl;
+import com.trade.main.presenter.MainPresenter;
+import com.trade.main.presenter.MainPresenterImpl;
 import com.trade.model.ToolbarBean;
 import com.trade.util.Constants;
 

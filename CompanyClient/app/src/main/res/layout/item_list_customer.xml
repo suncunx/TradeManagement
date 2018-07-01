@@ -5,7 +5,7 @@
 
         <variable
             name="customerBean"
-            type="com.trade.model.CustomerResultBean.ResultBean.CustomerBean"/>
+            type="com.trade.other.model.CustomerResultBean.ResultBean.CustomerBean"/>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

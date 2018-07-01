@@ -4,7 +4,7 @@
 
         <variable
             name="inBillSaveBean"
-            type="com.trade.home.detail.inbill.save.model.InBillSaveBean"/>
+            type="com.trade.home.model.InBillSaveBean"/>
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"

@@ -16,12 +16,12 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.trade.R;
 import com.trade.app.AppData;
-import com.trade.main.MainActivity;
+import com.trade.main.ui.MainActivity;
 import com.trade.user.adapter.UserAdapter;
 import com.trade.user.model.UserItem;
 import com.trade.util.DialogUtil;
 import com.trade.util.PreferUtil;
-import com.trade.view.HorizontalDecoration;
+import com.trade.widget.HorizontalDecoration;
 
 import java.util.ArrayList;
 import java.util.List;

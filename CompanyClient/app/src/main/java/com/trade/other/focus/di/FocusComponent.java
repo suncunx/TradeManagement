@@ -1,7 +1,8 @@
 package com.trade.other.focus.di;
 
 import com.architecture.di.PerActivity;
-import com.trade.other.focus.FocusActivity;
+import com.trade.other.focus.ui.FocusActivity;
+import com.trade.other.focus.ui.NewsFragment;
 
 import dagger.Component;
 
@@ -14,4 +15,6 @@ import dagger.Component;
 public interface FocusComponent {
 
     void inject(FocusActivity activity);
+
+    void inject(NewsFragment newsFragment);
 }

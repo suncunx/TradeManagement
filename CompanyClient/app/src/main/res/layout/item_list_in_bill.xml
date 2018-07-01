@@ -4,11 +4,11 @@
 
     <data>
 
-        <import type="com.trade.model.InBillResultBean.ResultBean.InBillBean"/>
+        <import type="com.trade.home.model.InBillResultBean.ResultBean.InBillBean"/>
 
         <variable
             name="inBillBean"
-            type="com.trade.model.InBillResultBean.ResultBean.InBillBean"/>
+            type="com.trade.home.model.InBillResultBean.ResultBean.InBillBean"/>
     </data>
 
     <LinearLayout

@@ -3,9 +3,9 @@
 
     <data>
 
-        <import type="com.trade.model.GoodsResultBean.ResultBean.GoodsBean"/>
+        <import type="com.trade.goods.model.GoodsResultBean.ResultBean.GoodsBean"/>
 
-        <import type="com.trade.goods.detail.mvp.GoodsDetailPresenterImpl.GoodsClickListener"/>
+        <import type="com.trade.goods.presenter.GoodsDetailPresenterImpl.GoodsClickListener"/>
 
         <import type="android.view.View"/>
         <variable

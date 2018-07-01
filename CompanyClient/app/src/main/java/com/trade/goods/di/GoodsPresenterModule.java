@@ -5,6 +5,8 @@ import android.util.Log;
 import com.architecture.di.PerFragment;
 import com.architecture.util.BasePreferUtil;
 import com.tamic.novate.Novate;
+import com.trade.goods.model.GoodsModel;
+import com.trade.goods.model.GoodsModelImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,5 +31,11 @@ public class GoodsPresenterModule {
         header.put("userId", BasePreferUtil.getInstance().getUserId());
         builder.addHeader(header);
         return builder.build();
+    }
+
+    @PerFragment
+    @Provides
+    GoodsModel provideGoodsModel(Novate novate) {
+        return new GoodsModelImpl(novate);
     }
 }

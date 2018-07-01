@@ -1,8 +1,12 @@
 package com.trade.goods.di;
 
 import com.architecture.di.PerFragment;
-import com.trade.goods.mvp.GoodsPresenter;
-import com.trade.goods.mvp.GoodsPresenterImpl;
+import com.trade.goods.presenter.GoodsDetailPresenter;
+import com.trade.goods.presenter.GoodsDetailPresenterImpl;
+import com.trade.goods.presenter.GoodsPresenter;
+import com.trade.goods.presenter.GoodsPresenterImpl;
+import com.trade.goods.presenter.GoodsSavePresenter;
+import com.trade.goods.presenter.GoodsSavePresenterImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,6 +26,17 @@ public class GoodsModule {
         return new GoodsPresenterImpl();
     }
 
+    @PerFragment
+    @Provides
+    GoodsDetailPresenter provideGoodsDetailPresenter() {
+        return new GoodsDetailPresenterImpl();
+    }
+
+    @PerFragment
+    @Provides
+    GoodsSavePresenter provideGoodsSavePresenter() {
+        return new GoodsSavePresenterImpl();
+    }
 //    @PerFragment
 //    @Provides
 //    GoodsAdapter provideMessageAdapter() {

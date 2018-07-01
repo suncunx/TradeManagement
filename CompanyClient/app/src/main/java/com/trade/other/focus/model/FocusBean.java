@@ -1,7 +1,7 @@
 package com.trade.other.focus.model;
 
 
-import com.trade.other.focus.news.NewsFragment;
+import com.trade.other.focus.ui.NewsFragment;
 
 /**
  * Created by Stephen Sun on 2017/7/5 0005.

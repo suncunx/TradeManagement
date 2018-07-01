@@ -5,7 +5,7 @@ import android.support.annotation.LayoutRes;
 import com.architecture.adapter.BaseAdapter;
 import com.architecture.adapter.BaseViewHolder;
 import com.trade.BR;
-import com.trade.model.OutBillResultBean;
+import com.trade.home.model.OutBillResultBean;
 
 /**
  * Created by Stephen Sun on 2018/4/19 0019.

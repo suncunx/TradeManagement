@@ -3,9 +3,9 @@
 
     <data>
 
-        <import type="com.trade.user.login.model.LoginBean"/>
+        <import type="com.trade.login.model.LoginBean"/>
 
-        <import type="com.trade.user.login.LoginActivity.LoginClickListener"/>
+        <import type="com.trade.login.ui.LoginActivity.LoginClickListener"/>
 
         <variable
             name="loginBean"

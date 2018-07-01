@@ -3,9 +3,9 @@
 
     <data>
 
-        <import type="com.trade.other.focus.news.model.BannerBean"/>
+        <import type="com.trade.other.focus.model.BannerBean"/>
 
-        <import type="com.trade.other.focus.news.model.WeatherBean"/>
+        <import type="com.trade.other.focus.model.WeatherBean"/>
 
         <import type="android.view.View"/>
 

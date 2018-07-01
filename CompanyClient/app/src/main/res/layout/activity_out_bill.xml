@@ -3,9 +3,9 @@
 
     <data>
 
-        <import type="com.trade.model.OutBillResultBean.ResultBean.OutBillBean"/>
+        <import type="com.trade.home.model.OutBillResultBean.ResultBean.OutBillBean"/>
 
-        <import type="com.trade.home.detail.outBill.mvp.OutBillPresenterImpl.OutBillClickListener"/>
+        <import type="com.trade.home.presenter.OutBillPresenterImpl.OutBillClickListener"/>
 
         <import type="android.view.View"/>
         <variable

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <import type="com.trade.user.login.model.LoginBean"/>
+        <import type="com.trade.login.model.LoginBean"/>
 
-        <import type="com.trade.user.register.RegisterActivity.RegisterClickListener"/>
+        <import type="com.trade.login.ui.RegisterActivity.RegisterClickListener"/>
 
         <import type="android.text.method.TransformationMethod"/>
 

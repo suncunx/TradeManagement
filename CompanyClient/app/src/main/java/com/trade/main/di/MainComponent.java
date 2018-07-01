@@ -4,7 +4,7 @@ import com.architecture.di.PerActivity;
 import com.architecture.di.components.ActivityComponent;
 import com.architecture.di.components.ApplicationComponent;
 import com.architecture.di.modules.ActivityModule;
-import com.trade.main.MainActivity;
+import com.trade.main.ui.MainActivity;
 
 import dagger.Component;
 

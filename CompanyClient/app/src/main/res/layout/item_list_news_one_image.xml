@@ -2,7 +2,7 @@
 
     <data>
 
-        <import type="com.trade.other.focus.news.model.NewsResultBean.ArticleBean"/>
+        <import type="com.trade.other.focus.model.NewsResultBean.ArticleBean"/>
 
         <import type="android.view.View"/>
 

@@ -1,7 +1,12 @@
 package com.trade.other.di;
 
 import com.architecture.di.PerFragment;
-import com.trade.other.OtherFragment;
+import com.architecture.di.components.ApplicationComponent;
+import com.trade.other.ui.CustomerActivity;
+import com.trade.other.ui.DeliverActivity;
+import com.trade.other.ui.FinanceActivity;
+import com.trade.other.ui.OtherFragment;
+import com.trade.other.ui.SupplierActivity;
 
 import dagger.Component;
 /**
@@ -9,8 +14,16 @@ import dagger.Component;
  * Email:suncunx@qq.com
  */
 @PerFragment
-@Component(modules = OtherModule.class)
+@Component(dependencies = ApplicationComponent.class, modules = {OtherModule.class})
 public interface OtherComponent {
 
     void inject(OtherFragment otherFragment);
+
+    void inject(CustomerActivity activity);
+
+    void inject(SupplierActivity activity);
+
+    void inject(DeliverActivity activity);
+
+    void inject(FinanceActivity activity);
 }

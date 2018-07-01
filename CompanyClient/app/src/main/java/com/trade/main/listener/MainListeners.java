@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.trade.home.detail.inbill.save.InBillSaveActivity;
-import com.trade.home.detail.outBill.save.OutBillSaveActivity;
-import com.trade.main.mvp.MainPresenter;
+import com.trade.home.ui.InBillSaveActivity;
+import com.trade.home.ui.OutBillSaveActivity;
+import com.trade.main.presenter.MainPresenter;
 import com.trade.util.Constants;
 import com.trade.util.PreferUtil;
 

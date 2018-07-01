@@ -1,8 +1,10 @@
 package com.trade.other.focus.di;
 
 import com.architecture.di.PerActivity;
-import com.trade.other.focus.mvp.FocusPresenter;
-import com.trade.other.focus.mvp.FocusPresenterImpl;
+import com.trade.other.focus.presenter.FocusPresenter;
+import com.trade.other.focus.presenter.FocusPresenterImpl;
+import com.trade.other.focus.presenter.NewsFragmentPresenter;
+import com.trade.other.focus.presenter.NewsFragmentPresenterImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,5 +22,11 @@ public class FocusModule {
     @Provides
     FocusPresenter provideFocusPresenter() {
         return new FocusPresenterImpl();
+    }
+
+    @PerActivity
+    @Provides
+    NewsFragmentPresenter provideNewsFragmentPresenter() {
+        return new NewsFragmentPresenterImpl();
     }
 }
