@@ -61,7 +61,8 @@ public class DeliverPresenterImpl extends BaseNovateRvPresenterImpl<DeliverView,
         novate.call(service.getDelivers(), new BaseSubscriber<DeliverResultBean>() {
             @Override
             public void onError(Throwable e) {
-                getView().showError(e, pullToRefresh);
+                if (getView() != null)
+                    getView().showError(e, pullToRefresh);
             }
 
             @Override

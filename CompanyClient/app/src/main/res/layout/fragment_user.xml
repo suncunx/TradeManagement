@@ -33,7 +33,6 @@
         <LinearLayout
             style="@style/MWHorizontal"
             android:layout_marginBottom="@dimen/dp_15"
-            android:layout_marginTop="@dimen/dp_15"
             android:paddingBottom="@dimen/dp_20"
             android:paddingTop="@dimen/dp_20"
             android:background="@color/white"

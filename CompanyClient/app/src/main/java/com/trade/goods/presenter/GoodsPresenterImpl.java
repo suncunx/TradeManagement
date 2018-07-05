@@ -70,7 +70,9 @@ public class GoodsPresenterImpl extends BaseNovateRvPresenterImpl<GoodsView, Goo
 
             @Override
             public void onFailure(Throwable e) {
-                getView().showError(e, false);
+                if (getView() != null) {
+                    getView().showError(e, false);
+                }
             }
         });
     }
@@ -91,7 +93,9 @@ public class GoodsPresenterImpl extends BaseNovateRvPresenterImpl<GoodsView, Goo
 
             @Override
             public void onFailure(Throwable e) {
-                getView().showError(e, false);
+                if (getView() != null) {
+                    getView().showError(e, false);
+                }
             }
         });
     }

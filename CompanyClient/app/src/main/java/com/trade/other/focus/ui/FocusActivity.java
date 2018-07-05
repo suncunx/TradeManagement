@@ -1,5 +1,7 @@
 package com.trade.other.focus.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 
@@ -17,6 +19,12 @@ import java.util.List;
 
 
 public class FocusActivity extends BaseToolbarActivity<FocusView, FocusPresenter> implements FocusView {
+
+    public static Intent getCallingIntent(Context context) {
+        Intent intent = new Intent(context, FocusActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
+    }
 
     private FocusPagerAdapter pagerAdapter;
 
@@ -46,7 +54,6 @@ public class FocusActivity extends BaseToolbarActivity<FocusView, FocusPresenter
     @Override
     public void setData(List<FocusBean> data) {
         pagerAdapter = new FocusPagerAdapter(getSupportFragmentManager(), data);
-//        pagerAdapter.setData(data);
         viewDataBinding.setVariable(BR.fragmentPagerAdapter, pagerAdapter);
         viewDataBinding.setVariable(BR.viewPager, viewDataBinding.getRoot().findViewById(R.id.homeViewPager));
     }

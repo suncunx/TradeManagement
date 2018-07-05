@@ -16,9 +16,9 @@ import com.trade.login.di.LoginPresenterModule;
 import com.trade.login.model.LoginBean;
 import com.trade.login.model.LoginPwdService;
 import com.trade.login.model.LoginResultBean;
-import com.trade.login.util.LoginUtil;
 import com.trade.login.view.LoginPwdView;
 import com.trade.main.ui.MainActivity;
+import com.trade.util.PhoneNumberUtil;
 import com.trade.util.PreferUtil;
 
 import javax.inject.Inject;
@@ -53,25 +53,8 @@ public class LoginPwdPresenterImpl extends BasePresenterImpl<LoginPwdView> imple
         context.startActivity(intent);
     }
 
-//    private void restartApplication() {
-//        if (getView() != null) {
-//            getView().finishActivity();
-//        }
-//        Intent mStartActivity = new Intent(context, WelcomeActivity.class);
-//        int mPendingIntentId = 123456;
-//        PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-//        AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-//        mgr.set(AlarmManager.RTC, System.currentTimeMillis(), mPendingIntent);
-//        System.exit(0);
-//    }
-
     @Override
     public void requestLogin(final LoginBean loginBean) {
-        //        Map<String, String> map = new HashMap<>();
-        //        map.put(LoginConstant.KEY_ACCOUNT, loginBean.getPhone());
-        //        map.put(LoginConstant.KEY_PASSWORD, loginBean.getPassword());
-        //        map.put(LoginConstant.KEY_TYPE, LoginConstant.TYPE_PASSWORD);
-
         LoginPwdService service = novate.create(LoginPwdService.class);
         novate.call(service.login(loginBean.getPhone(), loginBean.getPassword()), new BaseSubscriber<LoginResultBean>(context) {
             @Override
@@ -98,7 +81,7 @@ public class LoginPwdPresenterImpl extends BasePresenterImpl<LoginPwdView> imple
         String phone = loginBean.getPhone();
         String password = loginBean.getPassword();
 
-        if (!LoginUtil.checkPhone(phone)) {
+        if (!PhoneNumberUtil.isValidPhoneNumber(phone)) {
             ToastUtils.showShort("手机号码不正确，请重新输入");
             return;
         }

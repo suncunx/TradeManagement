@@ -20,8 +20,8 @@ import com.trade.login.di.DaggerLoginComponent;
 import com.trade.login.di.LoginModule;
 import com.trade.login.model.LoginBean;
 import com.trade.login.presenter.RegisterPresenter;
-import com.trade.login.util.LoginUtil;
 import com.trade.login.view.RegisterView;
+import com.trade.util.PhoneNumberUtil;
 import com.trade.util.TimeCount;
 
 import org.json.JSONException;
@@ -70,7 +70,6 @@ public class RegisterActivity extends BaseToolbarActivity<RegisterView, Register
     @Override
     public void init() {
         loginBean = new LoginBean("", "", "");
-        //        viewDataBinding.setVariable(BR.title, LOGIN_BY_PWD);
         viewDataBinding.setVariable(BR.transMethod, PasswordTransformationMethod.getInstance()); // 默认不显示密码
         viewDataBinding.setVariable(BR.loginBean, loginBean);
         viewDataBinding.setVariable(BR.registerListener, new RegisterClickListener());
@@ -200,7 +199,7 @@ public class RegisterActivity extends BaseToolbarActivity<RegisterView, Register
 
         public void onVerify() {
             // 发送验证码
-            if (!LoginUtil.checkPhone(loginBean.getPhone())) {
+            if (!PhoneNumberUtil.isValidPhoneNumber(loginBean.getPhone())) {
                 ToastUtils.showShort("手机号码不正确，请重新输入");
             } else {
                 showProgressDialog("发送验证码...");

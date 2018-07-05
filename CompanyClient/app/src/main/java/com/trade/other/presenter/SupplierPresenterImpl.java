@@ -62,7 +62,8 @@ public class SupplierPresenterImpl extends BaseNovateRvPresenterImpl<SupplierVie
         novate.call(service.getSuppliers(), new BaseSubscriber<SupplierResultBean>() {
             @Override
             public void onError(Throwable e) {
-                getView().showError(e, pullToRefresh);
+                if (getView() != null)
+                    getView().showError(e, pullToRefresh);
             }
 
             @Override

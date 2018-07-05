@@ -34,8 +34,6 @@ public class OtherPresenterImpl extends BasePresenterImpl<OtherView> implements 
 
     private int[] resIds = {R.mipmap.user_orders, R.mipmap.user_collection, R.mipmap.user_footprint, R.mipmap.user_data, R.mipmap.user_about_us};
     private String[] titles = {"供应商管理", "客户管理", "送货员管理", "财务报表", "新闻看点"};
-    //    private int[] resIds = {R.mipmap.user_orders, R.mipmap.user_collection, R.mipmap.user_data};
-    //    private String[] titles = {"供应商管理", "客户管理", "财务报表"};
 
     @Override
     public void loadUser() {
@@ -84,8 +82,7 @@ public class OtherPresenterImpl extends BasePresenterImpl<OtherView> implements 
                 showChooseYearDialog();
                 break;
             case 4:
-                context.startActivity(new Intent(context, FocusActivity.class));
-//                ToastUtils.showShort("暂未开放，敬请期待");
+                context.startActivity(FocusActivity.getCallingIntent(context));
                 break;
         }
     }

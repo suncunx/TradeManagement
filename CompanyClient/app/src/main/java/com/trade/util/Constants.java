@@ -25,7 +25,6 @@ public class Constants extends BaseConstants {
     public static final String MAIN_OTHER = "其他";
     public static final String MAIN_USER = "我的";
 
-    public static final String CITY = "悉尼";
     public static final String FILTER = "筛选";
 
     public static final String EXTRA_CITY = "city";
@@ -58,10 +57,4 @@ public class Constants extends BaseConstants {
     public static final int FONT_SMALL = 1;
     public static final int FONT_NORMAL = 2;
 
-
-    public static final String ADVERTISE_TITLE = "Nike大吸力油烟机 38年专注高端";
-
-    // 已收藏
-    public static final int COLLECT_STATUS_TRUE = 1;
-    public static final int COLLECT_STATUS_FALSE = 2;
 }

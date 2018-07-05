@@ -61,7 +61,8 @@ public class CustomerPresenterImpl extends BaseNovateRvPresenterImpl<CustomerVie
         novate.call(service.getCustomers(), new BaseSubscriber<CustomerResultBean>() {
             @Override
             public void onError(Throwable e) {
-                getView().showError(e, pullToRefresh);
+                if (getView() != null)
+                    getView().showError(e, pullToRefresh);
             }
 
             @Override

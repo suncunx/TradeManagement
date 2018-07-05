@@ -1,8 +1,5 @@
 package com.trade.login.presenter;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,16 +13,15 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
-import com.trade.app.WelcomeActivity;
 import com.trade.login.di.DaggerLoginPresenterComponent;
 import com.trade.login.di.LoginPresenterModule;
 import com.trade.login.model.LoginBean;
 import com.trade.login.model.RegisterService;
-import com.trade.login.util.LoginUtil;
 import com.trade.login.view.RegisterView;
 import com.trade.main.ui.MainActivity;
 import com.trade.model.SimpleResultBean;
 import com.trade.util.HttpCode;
+import com.trade.util.PhoneNumberUtil;
 import com.trade.util.PreferUtil;
 
 import javax.inject.Inject;
@@ -54,25 +50,11 @@ public class RegisterPresenterImpl extends BasePresenterImpl<RegisterView> imple
     public void loginSuccess() { // 请求服务器登录
         ToastUtils.showShort("登录成功");
         PreferUtil.getInstance().setHasLogin();
-        //        restartApplication();
         if (getView() != null)
             getView().finishActivity();
         Intent intent = MainActivity.getCallingIntent(context);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
-    }
-
-    private void restartApplication() {
-
-        if (getView() != null) {
-            getView().finishActivity();
-        }
-        Intent mStartActivity = new Intent(context, WelcomeActivity.class);
-        int mPendingIntentId = 123456;
-        PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-        AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis(), mPendingIntent);
-        System.exit(0);
     }
 
     @Override
@@ -81,7 +63,7 @@ public class RegisterPresenterImpl extends BasePresenterImpl<RegisterView> imple
         String password = loginBean.getPassword();
         String verify = loginBean.getVerify();
 
-        if (!LoginUtil.checkPhone(phone)) {
+        if (!PhoneNumberUtil.isValidPhoneNumber(phone)) {
             ToastUtils.showShort("手机号码不正确，请重新输入");
             return;
         }
@@ -99,10 +81,6 @@ public class RegisterPresenterImpl extends BasePresenterImpl<RegisterView> imple
 
     @Override
     public void requestRegister(final LoginBean loginBean) {
-        //        Map<String, String> map = new HashMap<>();
-        //        map.put(LoginConstant.KEY_ACCOUNT, loginBean.getPhone());
-        //        map.put(LoginConstant.KEY_PASSWORD, loginBean.getPassword());
-
         RegisterService service = novate.create(RegisterService.class);
         novate.call(service.register(loginBean.getPhone(), loginBean.getPassword()), new BaseSubscriber<SimpleResultBean>() {
             @Override

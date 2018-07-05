@@ -1,8 +1,5 @@
 package com.trade.login.presenter;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
@@ -14,15 +11,14 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
-import com.trade.app.WelcomeActivity;
 import com.trade.login.di.DaggerLoginPresenterComponent;
 import com.trade.login.di.LoginPresenterModule;
 import com.trade.login.model.LoginBean;
 import com.trade.login.model.LoginPwdService;
 import com.trade.login.model.LoginResultBean;
-import com.trade.login.util.LoginUtil;
 import com.trade.login.view.LoginView;
 import com.trade.main.ui.MainActivity;
+import com.trade.util.PhoneNumberUtil;
 import com.trade.util.PreferUtil;
 
 import javax.inject.Inject;
@@ -56,24 +52,12 @@ public class LoginPresenterImpl extends BasePresenterImpl<LoginView> implements 
         context.startActivity(intent);
     }
 
-    private void restartApplication() {
-        if (getView() != null) {
-            getView().finishActivity();
-        }
-        Intent mStartActivity = new Intent(context, WelcomeActivity.class);
-        int mPendingIntentId = 123456;
-        PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-        AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis(), mPendingIntent);
-        System.exit(0);
-    }
-
     @Override
     public void onLogin(LoginBean loginBean) {
         String phone = loginBean.getPhone();
         String verify = loginBean.getVerify();
 
-        if (!LoginUtil.checkPhone(phone)) {
+        if (!PhoneNumberUtil.isValidPhoneNumber(phone)) {
             ToastUtils.showShort("手机号码不正确，请重新输入");
             return;
         }

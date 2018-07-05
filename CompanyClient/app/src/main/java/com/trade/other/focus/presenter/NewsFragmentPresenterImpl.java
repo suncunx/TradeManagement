@@ -24,10 +24,8 @@ import com.trade.other.focus.model.BannerBean;
 import com.trade.other.focus.model.BannerResultBean;
 import com.trade.other.focus.model.NewsResultBean;
 import com.trade.other.focus.model.NewsService;
-import com.trade.other.focus.model.WeatherBean;
 import com.trade.other.focus.ui.NewsDetailActivity;
 import com.trade.other.focus.view.NewsFragmentView;
-import com.trade.util.BannerUtil;
 import com.trade.widget.HorizontalDecoration;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -72,70 +70,14 @@ public class NewsFragmentPresenterImpl extends BaseNovateRvPresenterImpl<NewsFra
         }
     }
 
-    private void initializeBanner(List<String> images, List<String> titles, OnBannerListener listener) {
-        adapter.removeAllHeaderView();
-        bannerBean.setImages(images);
-        bannerBean.setTitles(titles);
-        bannerBean.setStart(true);
-        bannerBean.setOnBannerListener(listener);
-
-    }
-
-    private void initializeHeader(WeatherBean weatherBean) {
-
-        View view = BannerUtil.getHeaderDataBinding(context, R.layout.header_news, getView().getContentView(), bannerBean, weatherBean).getRoot();
-        adapter.addHeaderView(view);
-    }
-
     @Override
     public void loadData(boolean pullToRefresh, String category, Context context) {
         this.category = category;
         getView().showLoading(pullToRefresh);
         pageNo = 1;
         request(pullToRefresh);
-        //        requestNewsList(pullToRefresh, category);
 
     }
-
-    //    private void requestBanner(final boolean pullToRefresh, final String cateId) {
-    //        Map<String, Object> map = new HashMap<>();
-    //        map.put(NewsConstant.KEY_CATE_ID, cateId);
-    //        novate.post(NewsConstant.NEWS_BANNER, map, new BaseSubscriber<ResponseBody>() {
-    //            @Override
-    //            public void onError(Throwable e) {
-    //
-    //            }
-    //
-    //            @Override
-    //            public void onNext(ResponseBody responseBody) {
-    //                try {
-    //                    String resultStr = responseBody.string();
-    //                    JSONObject jsonObject = new JSONObject(resultStr);
-    //
-    //                    LogUtils.d(resultStr);
-    //                    if (jsonObject.getString(ApiManager.CODE).equals(HttpCode.OK)) { // 200
-    //                        BannerResultBean resultBean = GsonUtils.json2Bean(jsonObject, BannerResultBean.class);
-    //                        bannerResultList = resultBean.getResult();
-    //                        List<String> images = new ArrayList<>();
-    //                        List<String> titles = new ArrayList<>();
-    //                        for (BannerResultBean.ResultBean bean : bannerResultList) {
-    //                            images.add(bean.getPicture());
-    //                            titles.add(bean.getTitle());
-    //                        }
-    //                        initializeBanner(images, titles, NewsFragmentPresenterImpl.this);
-    //                        requestWeather();
-    //                    } else {
-    //                        getView().showContent();
-    //                    }
-    //
-    //                } catch (IOException e) {
-    //                    e.printStackTrace();
-    //                } catch (JSONException e) {
-    //                    e.printStackTrace();
-    //                }
-    //            }
-    //        });
-    //    }
 
     private void request(final boolean pullToRefresh) {
         Request.Builder builder = new Request.Builder();
@@ -176,7 +118,6 @@ public class NewsFragmentPresenterImpl extends BaseNovateRvPresenterImpl<NewsFra
                             if (!pullToRefresh) {
                                 LinearLayoutManager layoutManager = new LinearLayoutManager(NewsFragmentPresenterImpl.this.context);
                                 adapterBean = new AdapterBean(layoutManager, adapter, new HorizontalDecoration(NewsFragmentPresenterImpl.this.context, R.drawable.divider));
-                                //                    requestBanner(false, category);
                                 if (getView() == null)
                                     return;
                                 getView().setData(adapterBean);
@@ -194,21 +135,6 @@ public class NewsFragmentPresenterImpl extends BaseNovateRvPresenterImpl<NewsFra
             }
         });
     }
-    //    private void requestWeather() {
-    //        String city = "";
-    //        novate.call(service.getWeather(city), new BaseSubscriber<WeatherBean>() {
-    //            @Override
-    //            public void onError(Throwable e) {
-    //                getView().showError(e, false);
-    //            }
-    //
-    //            @Override
-    //            public void onNext(WeatherBean weatherBean) {
-    //                initializeHeader(weatherBean);
-    //                getView().showContent();
-    //            }
-    //        });
-    //    }
 
     @Override
     protected void initializeInjector(ApplicationComponent applicationComponent) {

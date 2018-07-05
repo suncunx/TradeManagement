@@ -10,7 +10,6 @@ import com.trade.login.view.RegisterView;
  */
 
 public interface RegisterPresenter extends BasePresenter<RegisterView> {
-//    void loginSuccess();
 
     void onLogin(LoginBean loginBean);
 

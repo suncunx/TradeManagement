@@ -117,18 +117,6 @@ public class NewsDetailActivity extends AppCompatActivity {
         webView.loadUrl(url);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_news_detail, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        showFontDialog();
-//        return true;
-//    }
-
     private void showFontDialog() {
         DialogUtil.buildFontDialog(this)
                 .itemsCallbackSingleChoice(PreferUtil.getInstance().getGlobalFont() - 1,

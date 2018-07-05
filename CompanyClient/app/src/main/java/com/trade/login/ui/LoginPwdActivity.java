@@ -56,7 +56,6 @@ public class LoginPwdActivity extends BaseToolbarActivity<LoginPwdView, LoginPwd
     public void init() {
 
         loginBean = new LoginBean("", "", "");
-//        viewDataBinding.setVariable(BR.title, LOGIN_BY_PWD);
         viewDataBinding.setVariable(BR.transMethod, PasswordTransformationMethod.getInstance()); // 默认不显示密码
         viewDataBinding.setVariable(BR.loginBean, loginBean);
         viewDataBinding.setVariable(BR.loginBlackListener, new LoginBlackClickListener());

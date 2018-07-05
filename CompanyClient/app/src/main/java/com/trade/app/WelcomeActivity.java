@@ -20,12 +20,12 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
-        if (PreferUtil.getInstance().isLogin()) {
+//        if (PreferUtil.getInstance().isLogin()) {
             startActivity(new Intent(MainActivity.getCallingIntent(this)));
             finish();
-        } else {
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
+//        } else {
+//            startActivity(new Intent(this, LoginActivity.class));
+//            finish();
+//        }
     }
 }

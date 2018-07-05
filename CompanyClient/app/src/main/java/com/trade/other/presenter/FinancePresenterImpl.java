@@ -37,12 +37,12 @@ public class FinancePresenterImpl extends BaseNovateLcePresenterImpl<FinanceView
         novate.call(service.getFinances(year), new BaseSubscriber<FinanceResultBean>() {
             @Override
             public void onError(Throwable e) {
-                getView().showError(e, pullToRefresh);
+                if (getView() != null)
+                    getView().showError(e, pullToRefresh);
             }
 
             @Override
             public void onNext(FinanceResultBean financeResultBean) {
-                //                getView().setData(financeResultBean);
                 int count = 0;
                 for (FinanceResultBean.ResultBean.FinanceMonthBean bean : financeResultBean.getResult().getFinances()) {
                     if (bean.getProfit() == 0) {

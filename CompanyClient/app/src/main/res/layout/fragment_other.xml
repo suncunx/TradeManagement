@@ -14,7 +14,6 @@
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"
                  android:background="@color/light_gray"
-                 android:paddingTop="@dimen/dp_15"
                  tools:context="com.ant.message.MessageFragment">
 
         <android.support.v7.widget.RecyclerView
