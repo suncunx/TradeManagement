@@ -2,8 +2,10 @@ package com.trade.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
 
 import com.trade.R;
 import com.trade.login.ui.LoginActivity;
@@ -19,13 +21,21 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome);
-//        if (PreferUtil.getInstance().isLogin()) {
-            startActivity(new Intent(MainActivity.getCallingIntent(this)));
-            finish();
-//        } else {
-//            startActivity(new Intent(this, LoginActivity.class));
-//            finish();
-//        }
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_welcome);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (PreferUtil.getInstance().isLogin()) {
+                    startActivity(new Intent(MainActivity.getCallingIntent(WelcomeActivity.this)));
+                    finish();
+                } else {
+                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        }, 2000);
+
     }
 }

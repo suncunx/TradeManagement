@@ -29,7 +29,7 @@
                     android:background="@color/colorAccent"
                     android:orientation="vertical">
 
-        <include layout="@layout/toolbar_login"/>
+        <include layout="@layout/toolbar_common"/>
         <ImageView
             android:id="@+id/iv_login"
             android:layout_width="@dimen/dp_80"

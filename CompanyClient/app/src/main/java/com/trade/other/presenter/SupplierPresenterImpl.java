@@ -158,7 +158,7 @@ public class SupplierPresenterImpl extends BaseNovateRvPresenterImpl<SupplierVie
         boolean wrapInScrollView = true;
         MaterialDialog dialog = new MaterialDialog.Builder(getView().getActivity())
                 .title("修改供应商")
-                .customView(R.layout.supplier_update, wrapInScrollView)
+                .customView(R.layout.view_supplier_update, wrapInScrollView)
                 .positiveText("修改")
                 .negativeText("取消")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
@@ -213,7 +213,7 @@ public class SupplierPresenterImpl extends BaseNovateRvPresenterImpl<SupplierVie
         boolean wrapInScrollView = true;
         MaterialDialog dialog = new MaterialDialog.Builder(getView().getActivity())
                 .title("添加供应商")
-                .customView(R.layout.supplier_update, wrapInScrollView)
+                .customView(R.layout.view_supplier_update, wrapInScrollView)
                 .positiveText("添加")
                 .negativeText("取消")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
