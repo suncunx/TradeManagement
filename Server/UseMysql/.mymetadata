@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="TradeManagement"
+  id="myeclipse.1521874327689"
+  context-root="/TradeManagement"
+  j2ee-spec="5.0"
+  archive="TradeManagement.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

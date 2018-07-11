@@ -94,4 +94,58 @@ goods_id int not null,
 primary key (id)
 )default charset = utf8;
 
+DELIMITER $$
+create procedure save_customer(
+in )
+begin
+	
+end$$
+DELIMITER ;
+
+DELIMITER $$
+create procedure save_customer(
+in userId int, in customerPhone varchar(50), in customerName varchar(50), in customerAddress varchar(50), out result int)
+begin
+	declare customerId int;
+	declare resultCount int;
+	set result = 0;
+	select count(*) into resultCount from customer where phone = customerPhone;
+	if (resultCount < 1) then
+		insert into customer(name, phone, address) values(customerName, customerPhone, customerAddress);
+	end if;
+	select id into customerId from customer where phone = customerPhone;
+	select count(*) into resultCount from user_customer where user_id = userId and customer_id = customerId;
+	if (resultCount < 1) then
+			insert into user_customer(user_id, customer_id) values(userId, customerId);
+			set result = 1;
+	end if;
+end$$
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
