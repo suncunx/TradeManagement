@@ -1,8 +1,11 @@
+####templete
 create table name(
 id int not null auto_increment,
 
 primary key (id)
 )default charset = utf8;
+####templete
+
 
 create table user(
 id int not null auto_increment,
@@ -94,13 +97,6 @@ goods_id int not null,
 primary key (id)
 )default charset = utf8;
 
-DELIMITER $$
-create procedure save_customer(
-in )
-begin
-	
-end$$
-DELIMITER ;
 
 DELIMITER $$
 create procedure save_customer(
@@ -121,6 +117,228 @@ begin
 	end if;
 end$$
 DELIMITER ;
+
+
+DELIMITER $$
+create procedure update_deliverer(
+in userId int, in outBillId int, in delivererId int)
+begin
+	update out_bill set deliver_status = 1 where id = outBillId and user_id = userId;
+	update deliverer set status = 0 where id = delivererId and user_id = userId;
+end$$
+DELIMITER ;
+
+
+DELIMITER $$
+create procedure query_goods(
+in userId int)
+begin
+	select goods.id as goods_id,goods.name as goods_name,unit,in_unit_price,out_unit_price,image,supplier.id as supplier_id,
+		supplier.name as supplier_name,phone,address 
+		from goods,supplier,user_supplier_goods where user_id = userId and 
+		supplier.id = supplier_id and goods.id = goods_id;
+end$$
+DELIMITER ;
+
+
+DELIMITER $$
+create procedure save_goods(
+in userId int, in goodsName varchar(50), in goodsUnit varchar(50), in inUnitPrice float,
+	in outUnitPrice float, in goodsImage varchar(50), in supplierId int, out result int)
+begin
+	declare goodsId int;
+	declare temp int;
+	set result = 0;/*在user_supplier_goods表中已存在该商品*/
+	/*如果goods表中不存在该商品，则添加新数据*/
+	select count(*) into temp from goods where name = goodsName and in_unit_price = inUnitPrice 
+	and out_unit_price = outUnitPrice and unit = goodsUnit;
+	if (temp) < 1 then
+			insert into goods(name, unit, in_unit_price, out_unit_price, image) values(goodsName, goodsUnit, inUnitPrice, outUnitPrice, goodsImage);
+	end if;
+	select id into goodsId from goods where name = goodsName and in_unit_price = inUnitPrice 
+	and out_unit_price = outUnitPrice and unit = unit and image = goodsImage;
+	select count(*) into temp from user_supplier_goods where user_id = userId and goods_id = goodsId;
+	if (temp) < 1 then
+			insert into user_supplier_goods(user_id, supplier_id, goods_id) values(userId, supplierId, goodsId);
+			set result = 1;
+	end if;
+end$$
+DELIMITER ;
+
+
+DELIMITER $$
+create procedure update_goods(
+in userId int, in goodsId int, in goodsName varchar(50), in goodsUnit varchar(50), in inUnitPrice float,
+	in outUnitPrice float, in goodsImage varchar(100), in supplierId int)
+begin
+	declare tempGoodsId int;
+	declare tempCount1 int;
+	declare tempCount2 int;
+	select count(*) into tempCount1 from user_supplier_goods where user_id != userId and goods_id = goodsId;
+	select count(*) into tempCount2 from goods where name = goodsName and in_unit_price = inUnitPrice 
+	and out_unit_price = outUnitPrice and unit = goodsUnit;
+	/*该商品存在其他商家引用，并且商品信息确实被改动了，新建一个商品记录，并对应到userId*/
+	if tempCount1 > 0 and tempCount2 < 1 then
+			insert into goods(name, unit, in_unit_price, out_unit_price, image) values(goodsName, goodsUnit, inUnitPrice, outUnitPrice, goodsImage);
+			select id into tempGoodsId from goods where name = goodsName and in_unit_price = inUnitPrice 
+	and out_unit_price = outUnitPrice and unit = goodsUnit;
+			update user_supplier_goods set goods_id = tempGoodsId where user_id = userId and supplier_id = supplierId 
+			and goods_id = goodsId;
+	else
+			update goods set name = goodsName, unit = goodsUnit, in_unit_price = inUnitPrice, 
+			out_unit_price = outUnitPrice, image = goodsImage where id = goodsId;
+	end if;
+end$$
+DELIMITER ;
+
+
+DELIMITER $$
+create procedure query_in_bill(
+in userId int, in pageSize int, in page int)
+begin
+	declare newspage int;
+	set newspage=pageSize*(page - 1);
+	select in_bill.id as in_bill_id,goods.id as goods_id,goods.name as goods_name,unit,in_unit_price,image,goods_count,in_unit_price*goods_count as total_price,supplier.id as supplier_id,
+		supplier.name as supplier_name,phone,address,time 
+		from goods,supplier,in_bill where user_id = userId and 
+		supplier.id = supplier_id and goods.id = goods_id  order by time desc limit newspage, pageSize;
+end$$
+DELIMITER ;
+
+
+DELIMITER $$
+create procedure save_in_bill(
+in userId int, in goodsId int, in goodsCount int, in supplierId int, in time datetime)
+begin
+	declare temp int;
+	insert into in_bill(goods_id, goods_count, supplier_id, time, user_id) values(goodsId, goodsCount, supplierId, time, userId);
+	select count(*) into temp from repertory where goods_id = goodsId;
+	if temp < 1 then
+		insert into repertory(goods_id, goods_count, user_id) values(goodsId, goodsCount, userId);
+	else
+		update repertory set goods_count = goods_count + goodsCount where 
+		user_id = userId and goods_id = goodsId;
+	end if;
+end$$
+DELIMITER ;
+
+DELIMITER $$
+create procedure update_in_bill(
+in userId int, in ibId int, in goodsId int, in goodsCount int, in supplierId int)
+begin
+	declare ibOriginGoodsCount int;
+	declare ibOriginGoodsId int;
+	select goods_id into ibOriginGoodsId from in_bill where id = ibId;
+	select goods_count into ibOriginGoodsCount from in_bill where id = ibId;
+	update in_bill set goodsId = goodsId, goods_count = goodsCount, supplier_id = supplierId where user_id = userId and id = ibId;
+	if (ibOriginGoodsId = goodsId) then
+		update repertory set goods_count = goods_count - ibOriginGoodsCount + goodsCount 
+		where user_id = userId and goods_id = goodsId;
+	else
+		delete from repertory where user_id = userId and goods_id = ibOriginGoodsId;
+		insert into repertory(goods_id, goods_count, user_id) values(goodsId, goodsCount, userId);
+	end if;
+end$$
+DELIMITER ;
+
+DELIMITER $$
+create procedure query_out_bill(
+in userId int, in pageSize int, in page int)
+begin
+	declare newspage int;
+	set newspage=pageSize*(page - 1);
+	select out_bill.id as out_bill_id,goods.id as goods_id,goods.name as goods_name,unit,out_unit_price,image,goods_count,
+		out_unit_price*goods_count as total_price,customer.id as customer_id,customer.name as customer_name,customer.phone as customer_phone,
+		address,pay_status,deliverer.id as deliverer_id,deliverer.name as deliverer_name,deliverer.phone as deliverer_phone,status,deliver_status,time from 
+		out_bill,goods,customer,deliverer where out_bill.user_id = userId and goods_id = goods.id
+		and customer_id = customer.id and deliverer_id = deliverer.id order by time desc limit newspage, pageSize;
+end$$
+DELIMITER ;
+
+
+DELIMITER $$
+create procedure save_out_bill(
+in userId int, in goodsId int, in goodsCount int, in customerId int, in payStatus bit,
+	in delivererId int, in deliverStatus int, in time datetime)
+begin
+	insert into out_bill(goods_id, goods_count, customer_id, pay_status, deliverer_id, deliver_status, time, user_id) values(goodsId, goodsCount, customerId, payStatus, delivererId, deliverStatus, time, userId);
+	update repertory set goods_count = goods_count - goodsCount where user_id = userId 
+		and goods_id = goodsId;
+	if (delivererId != 1) then
+		update deliverer set status = 1 where delivererId = delivererId;
+	end if;
+end$$
+DELIMITER ;
+
+####templete
+DELIMITER $$
+create procedure xxx(
+in )
+begin
+	
+end$$
+DELIMITER ;
+####templete
+
+
+DELIMITER $$
+create procedure update_out_bill(
+in userId int, in obId int, in goodsId int, in goodsCount int, in customerId int, in payStatus bit,
+	in delivererId int, in deliverStatus int)
+begin
+	declare obOriginGoodsCount int;
+	declare obOriginGoodsId int;
+	declare obOriginDeliverId int;
+	select goods_id into obOriginGoodsId from out_bill where id = obId;
+	select goods_count into obOriginGoodsCount from out_bill where id = obId;
+	select deliverer_id into obOriginDeliverId from out_bill where id = obId;
+	update out_bill set goods_id = goodsId, goods_count = goodsCount, customer_id = customerId, 
+		pay_status = payStatus, deliverer_id = delivererId, deliver_status = deliverStatus
+		where id = obId;
+	if (obOriginGoodsId = goodsId) then
+		update repertory set goods_count = goods_count + obOriginGoodsCount - goodsCount
+		where user_id = userId and goods_id = goodsId;
+	else
+		/*先把原来出货的商品数量在库存中加回去，再将新的商品的商品数量减掉，库存记录不能删除，也不能添加*/
+		update repertory set goods_count = goods_count + obOriginGoodsCount 
+		where user_id = userId and goods_id = obOriginGoodsId;
+		update repertory set goods_count = goods_count - goodsCount 
+		where user_id = userId and goods_id = goodsId;
+		end if;
+	if (obOriginDeliverId != delivererId) then
+		update deliverer set status = 0 where deliverer_id = obOriginDeliverId;
+		update deliverer set status = 1 where deliverer_id = delivererId;
+	end if;
+end$$
+DELIMITER ;
+
+
+DELIMITER $$
+create procedure save_supplier(
+in userId int, in supplierPhone varchar(50), in supplierName varchar(50), in supplierAddress varchar(50), 
+	out result int)
+begin
+	declare supplierId int;
+	declare temp int;
+	set result = 0; /*已存在该供应商*/
+	select count(*) into temp from supplier where phone = supplierPhone;
+	/*如果supplier表中不存在该供应商，则添加新数据*/
+	if (temp) < 1 then
+		insert into supplier(name, phone, address) values(supplierName, supplierPhone, supplierAddress);
+	end if;
+	select id into supplierId from supplier where phone = supplierPhone;
+	select count(*) into temp from user_supplier_goods where user_id = userId and supplier_id = supplierId;
+	if (temp) < 1 then
+		insert into user_supplier_goods(user_id, supplier_id, goods_id) values(userId, supplierId, null);
+		set result = 1;
+	end if;
+end$$
+DELIMITER ;
+
+
+
+
+
 
 
 
