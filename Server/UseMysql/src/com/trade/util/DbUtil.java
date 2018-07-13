@@ -150,7 +150,7 @@ public class DbUtil {
 	public void saveSupplier(Connection con, String userId, String phone, String name, String address)
 			throws SQLException {
 
-		String sql = "{call proSupplierSave(?,?,?,?,?)}";
+		String sql = "{call save_supplier(?,?,?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, phone);
@@ -190,7 +190,7 @@ public class DbUtil {
 		if (rs.next()) {
 			return false;
 		} else {
-			String sql = "delete user_supplier_goods where user_id=? and supplier_id=?";
+			String sql = "delete from user_supplier_goods where user_id=? and supplier_id=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, supplierId);
@@ -264,7 +264,7 @@ public class DbUtil {
 
 	// 删除user对应的客户
 	public void removeCustomer(Connection con, String userId, String customerId) throws Exception {
-		String sql = "delete user_customer where user_id=? and customer_id=?";
+		String sql = "delete from user_customer where user_id=? and customer_id=?";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, userId);
 		pstmt.setString(2, customerId);
@@ -277,7 +277,7 @@ public class DbUtil {
 	public List<Goods> listGoods(Connection con, String userId) throws Exception {
 		List<Goods> goodss = new ArrayList<Goods>();
 
-		String sql = "{call proGoodsQuery(?)}";
+		String sql = "{call query_goods(?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		ResultSet rs = cstmt.executeQuery();
@@ -295,17 +295,17 @@ public class DbUtil {
 		String goodsSupplierAddress = "";
 
 		while (rs.next()) {
-			goodsId = rs.getString("goodsId");
-			goodsName = rs.getString("goodsName");
-			goodsUnit = rs.getString("goodsUnit");
-			goodsInUnitPrice = rs.getString("goodsInUnitPrice");
-			goodsOutUnitPrice = rs.getString("goodsOutUnitPrice");
-			goodsImage = Constant.IMAGE_URL + rs.getString("goodsImage");
+			goodsId = rs.getString("goods_id");
+			goodsName = rs.getString("goods_name");
+			goodsUnit = rs.getString("unit");
+			goodsInUnitPrice = rs.getString("in_unit_price");
+			goodsOutUnitPrice = rs.getString("out_unit_price");
+			goodsImage = Constant.IMAGE_URL + rs.getString("image");
 			goodsRepertory = getRepertoryCount(con, goodsId, userId);
-			goodsSupplierId = rs.getString("supplierId");
-			goodsSupplierName = rs.getString("supplierName");
-			goodsSupplierPhone = rs.getString("supplierPhone");
-			goodsSupplierAddress = rs.getString("supplierAddress");
+			goodsSupplierId = rs.getString("supplier_id");
+			goodsSupplierName = rs.getString("supplier_name");
+			goodsSupplierPhone = rs.getString("phone");
+			goodsSupplierAddress = rs.getString("address");
 			Goods goods = new Goods(goodsId, goodsName, goodsUnit, goodsInUnitPrice, goodsOutUnitPrice, goodsImage,
 					goodsRepertory, goodsSupplierId, goodsSupplierName, goodsSupplierPhone, goodsSupplierAddress);
 			goodss.add(goods);
@@ -335,7 +335,7 @@ public class DbUtil {
 	public void saveGoods(Connection con, String userId, String goodsName, String goodsUnit, String goodsInUnitPrice,
 			String goodsOutUnitPirce, String goodsImage, String supplierId) throws SQLException {
 
-		String sql = "{call proGoodsSave(?,?,?,?,?,?,?,?)}";
+		String sql = "{call save_goods(?,?,?,?,?,?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, goodsName);
@@ -359,7 +359,7 @@ public class DbUtil {
 			String goodsInUnitPrice, String goodsOutUnitPirce, String goodsImage, String supplierId)
 			throws SQLException {
 
-		String sql = "{call proGoodsUpdate(?,?,?,?,?,?,?,?)}";
+		String sql = "{call update_goods(?,?,?,?,?,?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, goodsId);
@@ -375,7 +375,7 @@ public class DbUtil {
 
 	// 删除user对应的商品
 	public void removeGoods(Connection con, String userId, String supplierId, String goodsId) throws Exception {
-		String sql = "delete user_supplier_goods where user_id=? and supplier_id=? and goods_id=?";
+		String sql = "delete from user_supplier_goods where user_id=? and supplier_id=? and goods_id=?";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, userId);
 		pstmt.setString(2, supplierId);
@@ -400,7 +400,7 @@ public class DbUtil {
 	public List<InBill> listInBill(Connection con, String userId, String pageSize, String page) throws Exception {
 		List<InBill> inBills = new ArrayList<InBill>();
 
-		String sql = "{call proInBillQuery(?,?,?)}";
+		String sql = "{call query_in_bill(?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, pageSize);
@@ -422,19 +422,19 @@ public class DbUtil {
 		String ibTime = "";
 
 		while (rs.next()) {
-			ibId = rs.getString("ibId");
-			goodsId = rs.getString("goodsId");
-			goodsName = rs.getString("goodsName");
-			goodsUnit = rs.getString("goodsUnit");
-			goodsInUnitPrice = rs.getString("goodsInUnitPrice");
-			goodsImage = Constant.IMAGE_URL + rs.getString("goodsImage");
-			goodsCount = rs.getString("ibGoodsCount");
-			ibTotalPrice = rs.getString("ibTotalPrice");
-			goodsSupplierId = rs.getString("supplierId");
-			goodsSupplierName = rs.getString("supplierName");
-			goodsSupplierPhone = rs.getString("supplierPhone");
-			goodsSupplierAddress = rs.getString("supplierAddress");
-			ibTime = rs.getString("ibTime");
+			ibId = rs.getString("in_bill_id");
+			goodsId = rs.getString("goods_id");
+			goodsName = rs.getString("goods_name");
+			goodsUnit = rs.getString("unit");
+			goodsInUnitPrice = rs.getString("in_unit_price");
+			goodsImage = Constant.IMAGE_URL + rs.getString("image");
+			goodsCount = rs.getString("goods_count");
+			ibTotalPrice = rs.getString("total_price");
+			goodsSupplierId = rs.getString("supplier_id");
+			goodsSupplierName = rs.getString("supplier_name");
+			goodsSupplierPhone = rs.getString("phone");
+			goodsSupplierAddress = rs.getString("address");
+			ibTime = rs.getString("time");
 			InBill inBill = new InBill(ibId, goodsId, goodsName, goodsUnit, goodsImage, goodsInUnitPrice, goodsCount,
 					ibTotalPrice, goodsSupplierId, goodsSupplierName, goodsSupplierPhone, goodsSupplierAddress, ibTime);
 
@@ -447,7 +447,7 @@ public class DbUtil {
 	public void saveInBill(Connection con, String userId, String goodsId, String goodsCount, String supplierId,
 			String time) throws SQLException {
 
-		String sql = "{call proInBillSave(?,?,?,?,?)}";
+		String sql = "{call save_in_bill(?,?,?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, goodsId);
@@ -461,7 +461,7 @@ public class DbUtil {
 	public void updateInBill(Connection con, String userId, String ibId, String goodsId, String goodsCount,
 			String supplierId) throws SQLException {
 
-		String sql = "{call proInBillUpdate(?,?,?,?,?)}";
+		String sql = "{call update_in_bill(?,?,?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, ibId);
@@ -489,7 +489,7 @@ public class DbUtil {
 	// 调用存储过程，对出货账单进行查询
 	public List<OutBill> listOutBill(Connection con, String userId, String pageNo) throws Exception {
 		List<OutBill> outBills = new ArrayList<OutBill>();
-		String sql = "{call proOutBillQuery(?,?,?)}";
+		String sql = "{call query_out_bill(?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, Constant.PAGE_SIZE);
@@ -517,25 +517,25 @@ public class DbUtil {
 		String obTime = "";
 
 		while (rs.next()) {
-			obId = rs.getString("obId");
-			goodsId = rs.getString("goodsId");
-			goodsName = rs.getString("goodsName");
-			goodsUnit = rs.getString("goodsUnit");
-			goodsOutUnitPrice = rs.getString("goodsOutUnitPrice");
-			goodsImage = Constant.IMAGE_URL + rs.getString("goodsImage");
-			goodsCount = rs.getString("obGoodsCount");
-			obTotalPrice = rs.getString("obTotalPrice");
-			customerId = rs.getString("customerId");
-			customerName = rs.getString("customerName");
-			customerPhone = rs.getString("customerPhone");
-			customerAddress = rs.getString("customerAddress");
-			obPayStatus = rs.getString("obPayStatus");
-			deliverId = rs.getString("deliverId");
-			deliverMan = rs.getString("deliverMan");
-			deliverPhone = rs.getString("deliverPhone");
-			deliverManStatus = rs.getString("deliverManStatus");
+			obId = rs.getString("out_bill_id");
+			goodsId = rs.getString("goods_id");
+			goodsName = rs.getString("goods_name");
+			goodsUnit = rs.getString("unit");
+			goodsOutUnitPrice = rs.getString("out_unit_price");
+			goodsImage = Constant.IMAGE_URL + rs.getString("image");
+			goodsCount = rs.getString("goods_count");
+			obTotalPrice = rs.getString("total_price");
+			customerId = rs.getString("customer_id");
+			customerName = rs.getString("customer_name");
+			customerPhone = rs.getString("customer_phone");
+			customerAddress = rs.getString("address");
+			obPayStatus = rs.getString("is_paid");
+			deliverId = rs.getString("deliverer_id");
+			deliverMan = rs.getString("deliverer_name");
+			deliverPhone = rs.getString("deliverer_phone");
+			deliverManStatus = rs.getString("status");
 
-			deliverStatus = rs.getString("obDeliverStatus");
+			deliverStatus = rs.getString("deliver_status");
 			if (deliverStatus.equals("-1")) {
 				deliverStatus = "未发货";
 			} else if (deliverStatus.equals("0")) {
@@ -543,7 +543,7 @@ public class DbUtil {
 			} else {
 				deliverStatus = "交易完成";
 			}
-			obTime = rs.getString("obTime");
+			obTime = rs.getString("time");
 			OutBill outBill = new OutBill(obId, goodsId, goodsName, goodsUnit, goodsOutUnitPrice, goodsImage,
 					goodsCount, obTotalPrice, customerId, customerName, customerPhone, customerAddress, obPayStatus,
 					deliverId, deliverMan, deliverPhone, deliverManStatus, deliverStatus, obTime);
@@ -626,13 +626,13 @@ public class DbUtil {
 	public void saveOutBill(Connection con, String userId, String goodsId, String goodsCount, String customerId,
 			String payStatus, String deliverId, String deliverStatus, String time) throws SQLException {
 
-		String sql = "{call proOutBillSave(?,?,?,?,?,?,?,?)}";
+		String sql = "{call save_out_bill(?,?,?,?,?,?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, goodsId);
 		cstmt.setString(3, goodsCount);
 		cstmt.setString(4, customerId);
-		cstmt.setString(5, payStatus);
+		cstmt.setBoolean(5, payStatus.equals("0") ? false : true);
 		cstmt.setString(6, deliverId);
 		cstmt.setString(7, deliverStatus);
 		cstmt.setString(8, time);
@@ -643,7 +643,7 @@ public class DbUtil {
 	public void updateOutBill(Connection con, String userId, String obId, String goodsId, String goodsCount,
 			String customerId, String payStatus, String deliverId, String deliverStatus) throws SQLException {
 
-		String sql = "{call proOutBillUpdate(?,?,?,?,?,?,?,?)}";
+		String sql = "{call update_out_bill(?,?,?,?,?,?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, obId);
@@ -707,16 +707,16 @@ public class DbUtil {
 			return null;
 	}
 
-	public OutBillDetail missionDeliver(Connection con, String deliverId) throws Exception {
+	public OutBillDetail missionDeliver(Connection con, String delivererId) throws Exception {
 
-		String sql = "select obId,goodsId,goodsName,goodsUnit,goodsOutUnitPrice,goodsImage,obGoodsCount,"
-				+ "goodsOutUnitPrice*obGoodsCount obTotalPrice,customerId,customerName,customerPhone,"
-				+ "customerAddress,obPayStatus,deliverId,deliverMan,deliverPhone,deliverManStatus,obDeliverStatus,obUserId,obTime from"
-				+ " outBill,goods,customer,deliver where obDeliverStatus = 0 and obDeliverId = ? and obGoodsId = goodsId"
-				+ " and obCustomerId = customerId and obDeliverId = deliverId";
+		String sql = "select out_bill.id as out_bill_id,goods.id as goods_id,goods.name as goods_name,unit,out_unit_price,image,goods_count,"
+				+ "out_unit_price*goods_count as total_price,customer.id as customer_id,customer.name as customer_name,customer.phone as customer_phone,"
+				+ "address,pay_status,deliverer.id as deliverer_id,deliverer.name as deliverer_name,deliverer.phone as deliverer_phone,status,deliver_status,user_id,time from"
+				+ " out_bill,goods,customer,deliverer where deliver_status = 0 and deliver_id = ? and goods_id = goods.id"
+				+ " and customer_id = customer.id and deliverer_id = deliverer.id";
 
 		PreparedStatement pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, deliverId);
+		pstmt.setString(1, delivererId);
 		ResultSet rs = pstmt.executeQuery();
 
 		String obId = "";
@@ -740,25 +740,25 @@ public class DbUtil {
 		String obTime = "";
 
 		if (rs.next()) {
-			obId = rs.getString("obId");
-			goodsId = rs.getString("goodsId");
-			goodsName = rs.getString("goodsName");
-			goodsUnit = rs.getString("goodsUnit");
-			goodsOutUnitPrice = rs.getString("goodsOutUnitPrice");
-			goodsImage = Constant.IMAGE_URL_LOCAL + rs.getString("goodsImage");
-			goodsCount = rs.getString("obGoodsCount");
-			obTotalPrice = rs.getString("obTotalPrice");
-			customerId = rs.getString("customerId");
-			customerName = rs.getString("customerName");
-			customerPhone = rs.getString("customerPhone");
-			customerAddress = rs.getString("customerAddress");
-			obPayStatus = rs.getString("obPayStatus");
-			deliverId = rs.getString("deliverId");
-			deliverMan = rs.getString("deliverMan");
-			deliverPhone = rs.getString("deliverPhone");
-			deliverManStatus = rs.getString("deliverManStatus");
+			obId = rs.getString("out_bill_id");
+			goodsId = rs.getString("goods_id");
+			goodsName = rs.getString("goods_name");
+			goodsUnit = rs.getString("unit");
+			goodsOutUnitPrice = rs.getString("out_unit_price");
+			goodsImage = Constant.IMAGE_URL_LOCAL + rs.getString("image");
+			goodsCount = rs.getString("goods_count");
+			obTotalPrice = rs.getString("total_price");
+			customerId = rs.getString("customer_id");
+			customerName = rs.getString("customer_name");
+			customerPhone = rs.getString("customer_phone");
+			customerAddress = rs.getString("address");
+			obPayStatus = rs.getString("pay_status");
+			delivererId = rs.getString("deliverer_id");
+			deliverMan = rs.getString("deliverer_name");
+			deliverPhone = rs.getString("deliverer_phone");
+			deliverManStatus = rs.getString("status");
 
-			deliverStatus = rs.getString("obDeliverStatus");
+			deliverStatus = rs.getString("deliver_status");
 			if (deliverStatus.equals("-1")) {
 				deliverStatus = "未发货";
 			} else if (deliverStatus.equals("0")) {
@@ -766,11 +766,11 @@ public class DbUtil {
 			} else {
 				deliverStatus = "交易完成";
 			}
-			userId = rs.getString("obUserId");
-			obTime = rs.getString("obTime");
+			userId = rs.getString("user_id");
+			obTime = rs.getString("time");
 			OutBillDetail outBill = new OutBillDetail(obId, goodsId, goodsName, goodsUnit, goodsOutUnitPrice,
 					goodsImage, goodsCount, obTotalPrice, customerId, customerName, customerPhone, customerAddress,
-					obPayStatus, deliverId, deliverMan, deliverPhone, deliverManStatus, deliverStatus, userId, obTime);
+					obPayStatus, delivererId, deliverMan, deliverPhone, deliverManStatus, deliverStatus, userId, obTime);
 			return outBill;
 		} else {
 			return null;
@@ -832,6 +832,16 @@ public class DbUtil {
 		}
 		this.closeRs(rs);
 		return delivers;
+	}
+	
+	public void saveDeliverer(Connection con, String userId, String name, String phone, String password) throws SQLException {
+		String sql = "insert into deliverer(name, phone, password, user_id) values(?,?,?,?)";
+		PreparedStatement stmt = con.prepareStatement(sql);
+		stmt.setString(1, name);
+		stmt.setString(2, phone);
+		stmt.setString(3, password);
+		stmt.setString(4, userId);
+		stmt.execute();
 	}
 
 	/************************************** 财务报表 *******************************************/
@@ -944,7 +954,7 @@ public class DbUtil {
 
 	// 交易完成
 	public void updateDeliverStatus(Connection con, String userId, String obId, String deliverId) throws Exception {
-		String sql = "{call proDeliverUpdate(?,?,?)}";
+		String sql = "{call update_deliverer(?,?,?)}";
 		CallableStatement cstmt = con.prepareCall(sql);
 		cstmt.setString(1, userId);
 		cstmt.setString(2, obId);

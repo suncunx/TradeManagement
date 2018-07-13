@@ -249,7 +249,7 @@ begin
 	set newspage=pageSize*(page - 1);
 	select out_bill.id as out_bill_id,goods.id as goods_id,goods.name as goods_name,unit,out_unit_price,image,goods_count,
 		out_unit_price*goods_count as total_price,customer.id as customer_id,customer.name as customer_name,customer.phone as customer_phone,
-		address,pay_status,deliverer.id as deliverer_id,deliverer.name as deliverer_name,deliverer.phone as deliverer_phone,status,deliver_status,time from 
+		address,is_paid,deliverer.id as deliverer_id,deliverer.name as deliverer_name,deliverer.phone as deliverer_phone,status,deliver_status,time from 
 		out_bill,goods,customer,deliverer where out_bill.user_id = userId and goods_id = goods.id
 		and customer_id = customer.id and deliverer_id = deliverer.id order by time desc limit newspage, pageSize;
 end$$
@@ -261,7 +261,7 @@ create procedure save_out_bill(
 in userId int, in goodsId int, in goodsCount int, in customerId int, in payStatus bit,
 	in delivererId int, in deliverStatus int, in time datetime)
 begin
-	insert into out_bill(goods_id, goods_count, customer_id, pay_status, deliverer_id, deliver_status, time, user_id) values(goodsId, goodsCount, customerId, payStatus, delivererId, deliverStatus, time, userId);
+	insert into out_bill(goods_id, goods_count, customer_id, is_paid, deliverer_id, deliver_status, time, user_id) values(goodsId, goodsCount, customerId, payStatus, delivererId, deliverStatus, time, userId);
 	update repertory set goods_count = goods_count - goodsCount where user_id = userId 
 		and goods_id = goodsId;
 	if (delivererId != 1) then
@@ -293,7 +293,7 @@ begin
 	select goods_count into obOriginGoodsCount from out_bill where id = obId;
 	select deliverer_id into obOriginDeliverId from out_bill where id = obId;
 	update out_bill set goods_id = goodsId, goods_count = goodsCount, customer_id = customerId, 
-		pay_status = payStatus, deliverer_id = delivererId, deliver_status = deliverStatus
+		is_paid = payStatus, deliverer_id = delivererId, deliver_status = deliverStatus
 		where id = obId;
 	if (obOriginGoodsId = goodsId) then
 		update repertory set goods_count = goods_count + obOriginGoodsCount - goodsCount

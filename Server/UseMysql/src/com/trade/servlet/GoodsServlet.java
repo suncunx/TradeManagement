@@ -92,7 +92,7 @@ public class GoodsServlet extends BaseServlet {
 		System.out.println("fieldName = " + fieldName + " fileName = "
 				+ fileName + " contentType = " + contentType);
 		File uploadedFile = new File(
-				"J:/MyEclipse 10/workspace/JavaEE/TradeManagement/WebRoot/image/"
+				"F:/openSource/TradeManagement/Server/UseMysql/WebRoot/image/"
 						+ time + ".jpg");
 		item.write(uploadedFile);
 		dbUtil.saveGoods(con, userId, name, unit, inUnitPrice, outUnitPrice,
@@ -112,7 +112,7 @@ public class GoodsServlet extends BaseServlet {
 		try {
 			sis = request.getInputStream();
 			System.out.println(request.getServletPath());
-			String root = "J:/MyEclipse 10/workspace/JavaEE/TradeManagement/WebRoot/image/";
+			String root = "F:/openSource/TradeManagement/Server/UseMysql/WebRoot/image/";
 			File file = new File(root + imageName);
 			OutputStream os = new FileOutputStream(file);
 			BufferedOutputStream bos = new BufferedOutputStream(os);
@@ -199,7 +199,7 @@ public class GoodsServlet extends BaseServlet {
 		System.out.println("fieldName = " + fieldName + " fileName = "
 				+ fileName + " contentType = " + contentType);
 		File uploadedFile = new File(
-				"J:/MyEclipse 10/workspace/JavaEE/TradeManagement/WebRoot/image/"
+				"F:/openSource/TradeManagement/Server/UseMysql/WebRoot/image/"
 						+ time + ".jpg");
 		item.write(uploadedFile);
 		dbUtil.updateGoods(con, userId, goodsId, name, unit, inUnitPrice, outUnitPrice,

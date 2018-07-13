@@ -1,5 +1,7 @@
 package com.trade.servlet;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,6 +23,24 @@ public class DeliverServlet extends BaseServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void save(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		String phone = request.getHeader("phone");
+		String name = URLDecoder.decode(request.getHeader("name"), "utf-8");
+		String password = URLDecoder.decode(request.getHeader("password"), "utf-8");
+
+		System.out.println(userId + name  + phone+ password);
+
+		try {
+			dbUtil.saveDeliverer(con, userId, name, phone, password);
+			doResponse(response, getResult(200, "添加成功", "添加成功"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbUtil.closeCon(con);
+		}
+
 	}
 	
 	public void login(HttpServletRequest request, HttpServletResponse response) {

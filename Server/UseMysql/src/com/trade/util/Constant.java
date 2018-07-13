@@ -9,6 +9,6 @@ public class Constant {
 	public static final String PAGE_SIZE = "6";
 	public static final String IMAGE_URL_LOCAL = "http://10.0.3.2:8080/TradeManagement/image/";
 //	public static final String IMAGE_URL = "http://192.168.23.1:8080/TradeManagement/image/";
-	public static final String IMAGE_URL = "http://192.168.42.5:8080/TradeManagement/image/";
+	public static final String IMAGE_URL = "http://192.168.43.205:8080/TradeManagement/image/";
 
 }
