@@ -16,7 +16,7 @@
 ![inBillimage](https://github.com/suncunx/TradeManagement/blob/master/ScreenShots/inBill.jpg)
 
 # 环境配置
-	##1.数据库配置
+	## 1.数据库配置
 		本项目可以使用Sql Server 2012数据库，或者MySQL数据库，二者选其一即可。
 		（1）Sql Server 2012数据库配置
 			①安装Sql Server 2012
@@ -27,12 +27,12 @@
 			③复制、粘贴[此文件](https://github.com/suncunx/TradeManagement/tree/master/Database/mysql/sql.txt)中的sql脚本
 		笔者建议采用MySQL数据库，安装方便，轻量简洁。
 	
-	##2.服务端配置
+	## 2.服务端配置
 		服务端采用MyEclipse开发，开发者需要到Constant类中进行配置，如下图所示：
 		![config server](https://github.com/suncunx/TradeManagement/blob/master/ScreenShots/configServer.png)
 		笔者是用电脑连接手机开的热点，电脑作为服务端，其中的服务器地址即是电脑的ip
 
-	##3.客户端配置
+	## 3.客户端配置
 		客户端采用Android Studio开发
 		（1）企业客户端（CompanyClient文件夹）
 			开发者需要到BaseConstants类中进行配置，如下图所示：
