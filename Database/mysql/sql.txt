@@ -1,11 +1,3 @@
-####templete
-create table name(
-id int not null auto_increment,
-
-primary key (id)
-)default charset = utf8;
-####templete
-
 
 create table user(
 id int not null auto_increment,
@@ -96,7 +88,6 @@ supplier_id int not null,
 goods_id int not null,
 primary key (id)
 )default charset = utf8;
-
 
 DELIMITER $$
 create procedure save_customer(
@@ -270,17 +261,6 @@ begin
 end$$
 DELIMITER ;
 
-####templete
-DELIMITER $$
-create procedure xxx(
-in )
-begin
-	
-end$$
-DELIMITER ;
-####templete
-
-
 DELIMITER $$
 create procedure update_out_bill(
 in userId int, in obId int, in goodsId int, in goodsCount int, in customerId int, in payStatus bit,
@@ -320,9 +300,9 @@ in userId int, in supplierPhone varchar(50), in supplierName varchar(50), in sup
 begin
 	declare supplierId int;
 	declare temp int;
-	set result = 0; /*已存在该供应商*/
+	set result = 0; /*mean the supplier exists */
 	select count(*) into temp from supplier where phone = supplierPhone;
-	/*如果supplier表中不存在该供应商，则添加新数据*/
+	/*if this supplier not exists, insert a row*/
 	if (temp) < 1 then
 		insert into supplier(name, phone, address) values(supplierName, supplierPhone, supplierAddress);
 	end if;
@@ -330,13 +310,32 @@ begin
 	select count(*) into temp from user_supplier_goods where user_id = userId and supplier_id = supplierId;
 	if (temp) < 1 then
 		insert into user_supplier_goods(user_id, supplier_id, goods_id) values(userId, supplierId, null);
-		set result = 1;
+		set result = 1;/*mean the supplier not exists */
 	end if;
 end$$
 DELIMITER ;
 
 
+insert into deliverer(name) values('empty');
 
+#templete of creating table
+#create table table_name(
+#id int not null auto_increment,
+
+#primary key (id)
+#)DEFAULT CHARSET=utf8;
+#templete of creating table
+
+
+#templete of creating procedure
+#DELIMITER $$
+#create procedure xxx(
+#in )
+#begin
+	
+#end$$
+#DELIMITER ;
+#templete of creating procedure
 
 
 
