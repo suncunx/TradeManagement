@@ -24,7 +24,7 @@
 		（2）MySQL数据库配置
 			①安装最新版本MySQL
 			②进入MySQL命令行界面
-			③复制、粘贴[此文件](https://github.com/suncunx/TradeManagement/tree/master/Database/mysql/sql.txt)中的sql脚本
+			③复制、粘贴[此文件](/Database/mysql/sql.txt)中的sql脚本
 		笔者建议采用MySQL数据库，安装方便，轻量简洁。
 	
 	## 2.服务端配置
@@ -36,10 +36,10 @@
 		客户端采用Android Studio开发
 		（1）企业客户端（CompanyClient文件夹）
 			开发者需要到BaseConstants类中进行配置，如下图所示：
-			![config client](https://github.com/suncunx/TradeManagement/blob/master/ScreenShots/configCompany.png)
+![config client](/ScreenShots/configCompany.png)
 		（2）送货员客户端（DeliverClient文件夹）
 			开发者需要到Constant类中进行配置，如下图所示：
-			![config client](https://github.com/suncunx/TradeManagement/blob/master/ScreenShots/configDeliverer.png)
+![config client](https://github.com/suncunx/TradeManagement/blob/master/ScreenShots/configDeliverer.png)
 
 # 注意
 	1.服务端需要先作为Web项目在Tomcat上运行，再作为Java Application运行
